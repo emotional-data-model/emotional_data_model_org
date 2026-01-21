@@ -2,25 +2,24 @@ import { CheckCircle2, Circle } from "lucide-react";
 
 const versions = [
   {
-    version: "v0.4.1",
+    version: "v0.4.0",
     status: "published",
-    date: "2025",
+    date: "December 2025",
     changes: [
       "Initial public release",
-      "Core schema specification",
+      "Core schema specification (10 domains, 96 fields)",
       ".ddna envelope format",
       "Affective manifold foundations",
     ],
   },
   {
-    version: "v0.5.0",
-    status: "planned",
-    date: "Q2 2025",
+    version: "v0.4.1",
+    status: "published",
+    date: "January 2026",
     changes: [
-      "Recall engine integration",
-      "Affective delta standardisation",
-      "Extended governance policies",
-      "Multi-agent coordination protocol",
+      "DOI registration (10.5281/zenodo.17808652)",
+      "Documentation refinements",
+      "Clarified non-inferential positioning",
     ],
   },
 ];

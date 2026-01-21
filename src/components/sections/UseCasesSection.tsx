@@ -3,33 +3,33 @@ import { Archive, Bot, Brain, Building2, Heart, RefreshCw } from "lucide-react";
 const useCases = [
   {
     icon: Heart,
-    title: "Personal Media",
-    description: "Annotate photos, videos, and journals with emotional context that persists across platforms.",
+    title: "Personal Archives",
+    description: "Annotate media and journals with structured emotional metadata that persists across systems.",
   },
   {
     icon: Archive,
     title: "Therapeutic Archives",
-    description: "Secure, governed storage of emotional data for therapeutic and mental health applications.",
+    description: "Governed storage of emotional data for therapeutic and mental health research contexts.",
   },
   {
     icon: Bot,
-    title: "Reflective Agents",
-    description: "AI companions that maintain emotional continuity and authentic relational memory.",
+    title: "Agent Continuity",
+    description: "AI systems that preserve emotional context across sessions without re-extraction.",
   },
   {
     icon: RefreshCw,
-    title: "Memory Retrieval Engines",
-    description: "Systems that can query and reconstruct emotional context from past interactions.",
+    title: "Retrieval Systems",
+    description: "Query and retrieve structured emotional context from prior interactions.",
   },
   {
     icon: Brain,
-    title: "Life-long AI",
-    description: "Persistent AI systems that accumulate and integrate emotional understanding over time.",
+    title: "Longitudinal Studies",
+    description: "Research requiring consistent emotional data representation across extended timeframes.",
   },
   {
     icon: Building2,
-    title: "Enterprise Compliance",
-    description: "Governed emotional data handling that meets regulatory and ethical requirements.",
+    title: "Governance Infrastructure",
+    description: "Schema-governed emotional data handling for compliance-sensitive contexts.",
   },
 ];
 

@@ -22,7 +22,7 @@ const HeroSection = () => {
           </h1>
           
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-4 animate-fade-up font-light" style={{ animationDelay: '0.2s' }}>
-            A schema-first protocol for emotional representation, governance, and AI memory integrity.
+            An open specification for representing first-person affective expression in machine-readable format.
           </p>
           
           <p className="text-sm font-mono text-muted-foreground/70 mb-10 animate-fade-up" style={{ animationDelay: '0.25s' }}>

@@ -1,10 +1,10 @@
-import { AlertCircle, Brain, Database, Scale, Shield } from "lucide-react";
+import { AlertCircle, Brain, Database, Info, Scale, Shield } from "lucide-react";
 
 const reasons = [
   {
     icon: Brain,
     title: "Emotional Representation Missing",
-    description: "Current AI systems lack structured frameworks for representing emotional states and their temporal evolution.",
+    description: "Current AI systems lack structured frameworks for representing emotional states as explicit, subject-provided data.",
   },
   {
     icon: AlertCircle,
@@ -24,7 +24,12 @@ const reasons = [
   {
     icon: Scale,
     title: "Regulatory Compliance",
-    description: "EDM provides the representational infrastructure for EU AI Act Article 5(1)(f) compliance, which prohibits AI systems that infer emotions without appropriate safeguards. By externalising emotional context as explicit, governed data objects rather than implicit model states, EDM enables transparent, auditable emotional AI.",
+    description: "EDM provides representational infrastructure compatible with EU AI Act Article 5(1)(f) requirements, which restrict AI systems that infer emotions from biometric signals. EDM operates on explicitly expressed content rather than inferred states.",
+  },
+  {
+    icon: Info,
+    title: "Interpretation vs Inference",
+    description: "Inference derives emotional states from involuntary signals—facial expressions, voice patterns, physiological data. Interpretation structures emotional content from explicitly provided text. EDM operates in the interpretation domain.",
   },
 ];
 
@@ -40,7 +45,7 @@ const WhySection = () => {
             Why EDM Exists
           </h2>
           <p className="text-muted-foreground text-lg">
-            The emotional dimension of AI interaction remains unstructured, ungoverned, and ephemeral.
+            No common schema exists for representing emotional context across AI systems. EDM defines one.
           </p>
         </div>
 

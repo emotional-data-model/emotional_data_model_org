@@ -22,10 +22,17 @@ const WhatSection = () => {
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 What EDM Is
               </h2>
-              <p className="text-muted-foreground text-lg mb-8">
-                EDM is a foundational protocol that provides the missing infrastructure layer for emotional data in AI systems—stable, governed, and interoperable.
+              <p className="text-muted-foreground text-lg mb-6">
+                EDM defines a structured vocabulary for representing how individuals describe their emotional states. It provides 10 domains and 96 fields for encoding affect, context, and governance metadata from explicitly expressed content.
               </p>
-              
+
+              <div className="bg-muted/30 border border-border rounded-lg p-4 mb-8">
+                <h4 className="text-sm font-semibold text-foreground mb-2">Non-biometric by design</h4>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  EDM artifacts are issued from explicitly expressed content—user-provided text, journaling, transcripts—not inferred from biometric signals. The schema is designed to extend via cross-walks as regulatory permissions evolve, without breaking the core structure.
+                </p>
+              </div>
+
               <div className="space-y-4">
                 {features.map((feature) => (
                   <div key={feature.label} className="flex items-start gap-3">

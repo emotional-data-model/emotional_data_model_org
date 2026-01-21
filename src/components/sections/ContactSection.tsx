@@ -102,11 +102,11 @@ const ContactSection = () => {
             <div className="mt-8 pt-6 border-t border-border text-center">
               <p className="text-sm text-muted-foreground mb-2">Or reach us directly at</p>
               <a
-                href="mailto:research@deepadata.org"
+                href="mailto:contact@emotionaldatamodel.org"
                 className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
               >
                 <Mail className="w-4 h-4" />
-                research@deepadata.org
+                contact@emotionaldatamodel.org
               </a>
             </div>
           </div>

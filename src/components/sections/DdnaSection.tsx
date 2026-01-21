@@ -19,9 +19,30 @@ const DdnaSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             The <span className="font-mono text-accent">.ddna</span> Envelope
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
             A secure, self-describing container format for emotional data that ensures integrity, provenance, and long-range interoperability.
           </p>
+
+          <div className="max-w-xl mx-auto text-left mb-8">
+            <h4 className="text-sm font-semibold text-foreground mb-3">Issuance pathways</h4>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li className="flex items-start gap-2">
+                <span className="text-accent mt-1.5">•</span>
+                <span><span className="font-medium text-foreground">Subject-initiated</span> — the subject provides the content and initiates issuance.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-accent mt-1.5">•</span>
+                <span><span className="font-medium text-foreground">Delegated</span> — an authorised delegate issues on behalf of the subject under recorded authority.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-accent mt-1.5">•</span>
+                <span><span className="font-medium text-foreground">Retrospective</span> — prior text can be structured into EDM with explicit subject authorisation.</span>
+              </li>
+            </ul>
+            <p className="text-xs text-muted-foreground/80 mt-3">
+              Each issuance event records its pathway and associated governance metadata in-band.
+            </p>
+          </div>
         </div>
 
         <div className="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">

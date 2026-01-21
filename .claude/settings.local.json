@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git commit --amend -m \"$\\(cat <<''EOF''\nUpdate to v0.4.1: rebrand to EDM Initiative, add DOI and regulatory positioning\n\n- Replace DeepaData Research → EDM Initiative throughout\n- Update version 0.4.0 → 0.4.1 across all components\n- Add real DOI: 10.5281/zenodo.17808652\n- Add EU AI Act Article 5\\(1\\)\\(f\\) regulatory compliance messaging\n- Footer: add contact@emotionaldatamodel.org + deepadata.com link\nEOF\n\\)\")",
+      "Bash(npm run build:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd non-biometric constraint and issuance pathways documentation\n\n- WhatSection: clarify EDM operates on explicitly expressed content only\n- WhatSection: note cross-walk extensibility for future regulatory evolution\n- DdnaSection: document three issuance pathways \\(subject, delegated, retrospective\\)\n- DdnaSection: note in-band governance metadata recording\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
+    ]
+  }
+}
