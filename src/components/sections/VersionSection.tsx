@@ -1,0 +1,87 @@
+import { CheckCircle2, Circle } from "lucide-react";
+
+const versions = [
+  {
+    version: "v0.4.0",
+    status: "published",
+    date: "2025",
+    changes: [
+      "Initial public release",
+      "Core schema specification",
+      ".ddna envelope format",
+      "Affective manifold foundations",
+    ],
+  },
+  {
+    version: "v0.5.0",
+    status: "planned",
+    date: "Q2 2025",
+    changes: [
+      "Recall engine integration",
+      "Affective delta standardisation",
+      "Extended governance policies",
+      "Multi-agent coordination protocol",
+    ],
+  },
+];
+
+const VersionSection = () => {
+  return (
+    <section id="versions" className="relative py-24 lg:py-32">
+      <div className="container px-6">
+        <div className="max-w-4xl mx-auto text-center mb-16">
+          <span className="text-xs font-mono text-primary tracking-widest uppercase mb-4 block">
+            Roadmap
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Version History
+          </h2>
+        </div>
+
+        <div className="max-w-2xl mx-auto">
+          {versions.map((v, index) => (
+            <div key={v.version} className="relative pl-8 pb-12 last:pb-0">
+              {/* Timeline line */}
+              {index < versions.length - 1 && (
+                <div className="absolute left-[11px] top-6 bottom-0 w-px bg-border" />
+              )}
+              
+              {/* Timeline dot */}
+              <div className="absolute left-0 top-1">
+                {v.status === "published" ? (
+                  <CheckCircle2 className="w-6 h-6 text-primary" />
+                ) : (
+                  <Circle className="w-6 h-6 text-muted-foreground" />
+                )}
+              </div>
+              
+              <div className="border-gradient p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="font-mono font-semibold text-lg">{v.version}</span>
+                  <span className={`text-xs px-2 py-1 rounded-full font-mono ${
+                    v.status === "published" 
+                      ? "bg-primary/20 text-primary" 
+                      : "bg-muted text-muted-foreground"
+                  }`}>
+                    {v.status}
+                  </span>
+                  <span className="text-xs text-muted-foreground ml-auto">{v.date}</span>
+                </div>
+                <ul className="space-y-2">
+                  {v.changes.map((change) => (
+                    <li key={change} className="text-sm text-muted-foreground flex items-center gap-2">
+                      <div className="w-1 h-1 rounded-full bg-muted-foreground" />
+                      {change}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default VersionSection;
