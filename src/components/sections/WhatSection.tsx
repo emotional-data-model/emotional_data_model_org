@@ -46,7 +46,7 @@ const WhatSection = () => {
                 <div className="text-muted-foreground mb-2">// EDM Schema Structure</div>
                 <pre className="text-foreground/90 overflow-x-auto">
 {`{
-  "edm_version": "0.4.0",
+  "edm_version": "0.4.1",
   "envelope": {
     "type": "ddna",
     "integrity": "sha256:...",

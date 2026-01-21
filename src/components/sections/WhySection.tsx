@@ -1,4 +1,4 @@
-import { AlertCircle, Brain, Database, Shield } from "lucide-react";
+import { AlertCircle, Brain, Database, Scale, Shield } from "lucide-react";
 
 const reasons = [
   {
@@ -20,6 +20,11 @@ const reasons = [
     icon: Shield,
     title: "Ungoverned Memory",
     description: "Emotional memory in AI is not model-governed, leading to inconsistent and unreliable affective recall.",
+  },
+  {
+    icon: Scale,
+    title: "Regulatory Compliance",
+    description: "EDM provides the representational infrastructure for EU AI Act Article 5(1)(f) compliance, which prohibits AI systems that infer emotions without appropriate safeguards. By externalising emotional context as explicit, governed data objects rather than implicit model states, EDM enables transparent, auditable emotional AI.",
   },
 ];
 

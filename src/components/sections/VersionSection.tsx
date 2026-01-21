@@ -2,7 +2,7 @@ import { CheckCircle2, Circle } from "lucide-react";
 
 const versions = [
   {
-    version: "v0.4.0",
+    version: "v0.4.1",
     status: "published",
     date: "2025",
     changes: [

@@ -26,13 +26,13 @@ const HeroSection = () => {
           </p>
           
           <p className="text-sm font-mono text-muted-foreground/70 mb-10 animate-fade-up" style={{ animationDelay: '0.25s' }}>
-            by DeepaData Research
+            by EDM Initiative
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up" style={{ animationDelay: '0.3s' }}>
             <Button variant="hero" size="lg" className="group">
               <Download className="w-5 h-5 transition-transform group-hover:-translate-y-0.5" />
-              Download v0.4.0 (PDF)
+              Download v0.4.1 (PDF)
             </Button>
             <Button variant="hero-outline" size="lg" className="group">
               <ExternalLink className="w-5 h-5" />
@@ -41,7 +41,7 @@ const HeroSection = () => {
           </div>
           
           <p className="text-xs font-mono text-muted-foreground/50 mt-6 animate-fade-up" style={{ animationDelay: '0.4s' }}>
-            DOI: 10.5281/zenodo.xxxxx
+            DOI: 10.5281/zenodo.17808652
           </p>
         </div>
       </div>

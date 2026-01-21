@@ -5,15 +5,15 @@ const downloads = [
   {
     icon: FileText,
     title: "Whitepaper PDF",
-    description: "Complete EDM specification v0.4.0",
-    filename: "edm-whitepaper-v0.4.0.pdf",
+    description: "Complete EDM specification v0.4.1",
+    filename: "edm-whitepaper-v0.4.1.pdf",
     size: "2.4 MB",
   },
   {
     icon: FileJson,
     title: "Schema JSON",
     description: "JSON Schema definition files",
-    filename: "edm-schema-v0.4.0.json",
+    filename: "edm-schema-v0.4.1.json",
     size: "48 KB",
   },
   {
