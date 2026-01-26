@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import EDMLogo from "./EDMLogo";
-import { Button } from "@/components/ui/button";
 
 const navItems = [
   { label: "Why", href: "#why" },
@@ -48,9 +47,6 @@ const Navigation = () => {
                 {item.label}
               </a>
             ))}
-            <Button variant="hero-outline" size="sm" className="ml-4">
-              Download
-            </Button>
           </div>
 
           {/* Mobile menu button */}
@@ -75,11 +71,6 @@ const Navigation = () => {
                 {item.label}
               </a>
             ))}
-            <div className="px-3 pt-4">
-              <Button variant="hero" size="sm" className="w-full">
-                Download
-              </Button>
-            </div>
           </div>
         )}
       </div>
