@@ -1,12 +1,24 @@
 import { Check } from "lucide-react";
 
 const features = [
-  { label: "Schema-first", description: "Structure precedes implementation" },
-  { label: "Byte-stable", description: "Deterministic serialization" },
-  { label: "Representation / Governance separation", description: "Clean architectural boundaries" },
-  { label: "Cross-vendor", description: "No platform lock-in" },
-  { label: "Model-agnostic", description: "Works with any AI system" },
-  { label: "Emotional coherence foundation", description: "Built for affective continuity" },
+  { label: "Schema-bound", description: "10 domains / 96 fields for cross-system consistency" },
+  { label: "Byte-stable", description: "Deterministic serialization for long-term integrity" },
+  { label: "Governance-embedded", description: "Consent, jurisdiction, retention travel with the data" },
+  { label: "Vendor-agnostic", description: "No dependency on model or platform" },
+  { label: "Auditable", description: "Every artifact is attributable and contestable" },
+];
+
+const domainLegend = [
+  { domain: "meta", description: "identity + provenance" },
+  { domain: "core", description: "narrative structure" },
+  { domain: "constellation", description: "affect + archetype" },
+  { domain: "milky_way", description: "who, where, when" },
+  { domain: "gravity", description: "salience + persistence" },
+  { domain: "impulse", description: "intent + direction" },
+  { domain: "governance", description: "consent + rights" },
+  { domain: "telemetry", description: "extraction confidence" },
+  { domain: "system", description: "technical compatibility" },
+  { domain: "crosswalks", description: "external taxonomies" },
 ];
 
 const WhatSection = () => {
@@ -23,13 +35,13 @@ const WhatSection = () => {
                 What EDM Is
               </h2>
               <p className="text-muted-foreground text-lg mb-6">
-                EDM defines a structured vocabulary for representing how individuals describe their emotional states. It provides 10 domains and 96 fields for encoding affect, context, and governance metadata from explicitly expressed content.
+                EDM defines a governed, schema-bound representational format that externalises affective context as a deterministic, model-agnostic data object.
               </p>
 
               <div className="bg-muted/30 border border-border rounded-lg p-4 mb-8">
                 <h4 className="text-sm font-semibold text-foreground mb-2">Non-biometric by design</h4>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  EDM artifacts are issued from explicitly expressed content—user-provided text, journaling, transcripts—not inferred from biometric signals. The schema is designed to extend via cross-walks as regulatory permissions evolve, without breaking the core structure.
+                  EDM artifacts are issued from explicitly expressed content—user-provided text, journals, transcripts—not derived from biometric signals. The schema extends via cross-walks as permissions evolve, without breaking the core structure.
                 </p>
               </div>
 
@@ -47,26 +59,35 @@ const WhatSection = () => {
                 ))}
               </div>
             </div>
-            
+
             <div className="relative">
               <div className="border-gradient p-8 font-mono text-sm">
-                <div className="text-muted-foreground mb-2">// EDM Schema Structure</div>
-                <pre className="text-foreground/90 overflow-x-auto">
+                <div className="text-muted-foreground mb-2">// EDM v0.4.1 Domain Structure</div>
+                <pre className="text-foreground/90 overflow-x-auto text-xs">
 {`{
-  "edm_version": "0.4.1",
-  "envelope": {
-    "type": "ddna",
-    "integrity": "sha256:...",
-    "governance": {...}
-  },
-  "substrate": {
-    "affective_vectors": [...],
-    "temporal_layers": [...],
-    "salience_map": {...}
-  }
+  "meta": { "id": "...", "version": "0.4.1" },
+  "core": { "anchor": "...", "spark": "...", "wound": "..." },
+  "constellation": { "emotion_primary": "...", "emotion_subtone": [] },
+  "milky_way": { "location_context": "...", "associated_people": [] },
+  "gravity": { "emotional_weight": 0.8, "recurrence_pattern": "..." },
+  "impulse": { "drive_state": "...", "urgency": "..." },
+  "governance": { "jurisdiction": "...", "consent_basis": "..." },
+  "telemetry": { "entry_confidence": 0.95 },
+  "system": { "embeddings": [] },
+  "crosswalks": { "plutchik_primary": "..." }
 }`}
                 </pre>
               </div>
+
+              <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-1">
+                {domainLegend.map((item) => (
+                  <div key={item.domain} className="flex items-center gap-2 text-xs">
+                    <span className="font-mono text-primary">{item.domain}</span>
+                    <span className="text-muted-foreground/70">— {item.description}</span>
+                  </div>
+                ))}
+              </div>
+
               <div className="glow-orb w-[300px] h-[300px] bg-secondary/20 -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
             </div>
           </div>

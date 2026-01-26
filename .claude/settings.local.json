@@ -4,7 +4,14 @@
       "Bash(git commit --amend -m \"$\\(cat <<''EOF''\nUpdate to v0.4.1: rebrand to EDM Initiative, add DOI and regulatory positioning\n\n- Replace DeepaData Research → EDM Initiative throughout\n- Update version 0.4.0 → 0.4.1 across all components\n- Add real DOI: 10.5281/zenodo.17808652\n- Add EU AI Act Article 5\\(1\\)\\(f\\) regulatory compliance messaging\n- Footer: add contact@emotionaldatamodel.org + deepadata.com link\nEOF\n\\)\")",
       "Bash(npm run build:*)",
       "Bash(git add:*)",
-      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd non-biometric constraint and issuance pathways documentation\n\n- WhatSection: clarify EDM operates on explicitly expressed content only\n- WhatSection: note cross-walk extensibility for future regulatory evolution\n- DdnaSection: document three issuance pathways \\(subject, delegated, retrospective\\)\n- DdnaSection: note in-band governance metadata recording\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd non-biometric constraint and issuance pathways documentation\n\n- WhatSection: clarify EDM operates on explicitly expressed content only\n- WhatSection: note cross-walk extensibility for future regulatory evolution\n- DdnaSection: document three issuance pathways \\(subject, delegated, retrospective\\)\n- DdnaSection: note in-band governance metadata recording\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push)",
+      "Bash(python -c:*)",
+      "Bash(pip install:*)",
+      "WebFetch(domain:zenodo.org)",
+      "Bash(find:*)",
+      "WebSearch",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nComplete landing page refinement for emotionaldatamodel.org\n\nWhat section:\n- Use whitepaper language for main description\n- Replace fabricated JSON with real 10-domain structure\n- Add domain legend with role descriptions\n- Update features to representation guarantees\n- Tighten non-biometric callout\n\nWhy/DDNA sections:\n- Standardize on ''affective context'' terminology\n\nUse Cases section:\n- Replace with salience-focused, whitepaper-aligned use cases\n- Update subtitle to emphasize persist/transfer/auditable\n\nDownloads section:\n- Connect to real resources \\(Zenodo, GitHub\\)\n- Add Reference Implementation row with MIT-licensed repos\n- Fix border styling consistency\n\nRemoved:\n- Substrate section \\(contained fabricated concepts\\)\n- Substrate from navigation\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
     ]
   }
 }

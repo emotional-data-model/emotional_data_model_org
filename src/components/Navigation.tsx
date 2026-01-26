@@ -7,7 +7,6 @@ const navItems = [
   { label: "Why", href: "#why" },
   { label: "What", href: "#what" },
   { label: ".ddna", href: "#ddna" },
-  { label: "Substrate", href: "#substrate" },
   { label: "Use Cases", href: "#use-cases" },
   { label: "Downloads", href: "#downloads" },
 ];

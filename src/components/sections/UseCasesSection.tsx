@@ -1,35 +1,35 @@
-import { Archive, Bot, Brain, Building2, Heart, RefreshCw } from "lucide-react";
+import { Archive, BookOpen, Brain, Heart, RefreshCw, Shield } from "lucide-react";
 
 const useCases = [
   {
+    icon: Brain,
+    title: "Salience-Based Recall",
+    description: "Retrieve affective context by significance, not recency. Enable systems to surface what matters across long timeframes.",
+  },
+  {
     icon: Heart,
-    title: "Personal Archives",
-    description: "Annotate media and journals with structured emotional metadata that persists across systems.",
+    title: "Therapeutic Applications",
+    description: "Structured affective context for mental health platforms with consent, jurisdiction, and retention controls embedded in-band.",
+  },
+  {
+    icon: Shield,
+    title: "Regulatory Compliance",
+    description: "Audit trails and provenance for AI systems processing affective context under EU AI Act and emerging frameworks.",
   },
   {
     icon: Archive,
-    title: "Therapeutic Archives",
-    description: "Governed storage of emotional data for therapeutic and mental health research contexts.",
-  },
-  {
-    icon: Bot,
-    title: "Agent Continuity",
-    description: "AI systems that preserve emotional context across sessions without re-extraction.",
+    title: "Research Archives",
+    description: "Consistent affective representation for longitudinal studies requiring schema stability across extended timeframes.",
   },
   {
     icon: RefreshCw,
-    title: "Retrieval Systems",
-    description: "Query and retrieve structured emotional context from prior interactions.",
+    title: "Personal Data Portability",
+    description: "User-owned affective records that transfer between applications under GDPR portability and similar rights.",
   },
   {
-    icon: Brain,
-    title: "Longitudinal Studies",
-    description: "Research requiring consistent emotional data representation across extended timeframes.",
-  },
-  {
-    icon: Building2,
-    title: "Governance Infrastructure",
-    description: "Schema-governed emotional data handling for compliance-sensitive contexts.",
+    icon: BookOpen,
+    title: "Journaling & Legacy",
+    description: "Structure meaningful user input\u2014journals, life stories, significant moments\u2014for long-term preservation and retrieval.",
   },
 ];
 
@@ -45,7 +45,7 @@ const UseCasesSection = () => {
             Use Cases
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            EDM enables a new category of applications where emotional data is a first-class citizen.
+            EDM provides the representational foundation for applications where affective context must persist, transfer, and remain auditable.
           </p>
         </div>
 

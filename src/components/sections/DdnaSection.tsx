@@ -20,7 +20,7 @@ const DdnaSection = () => {
             The <span className="font-mono text-accent">.ddna</span> Envelope
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
-            A secure, self-describing container format for emotional data that ensures integrity, provenance, and long-range interoperability.
+            A secure, self-describing container format for affective context that ensures integrity, provenance, and long-range interoperability.
           </p>
 
           <div className="max-w-xl mx-auto text-left mb-8">
@@ -70,18 +70,31 @@ const DdnaSection = () => {
               <div className="w-3 h-3 rounded-full bg-secondary" />
               <span className="font-mono text-xs text-muted-foreground ml-2">sample.ddna</span>
             </div>
-            <div className="font-mono text-xs text-muted-foreground leading-relaxed">
-              <span className="text-accent">DDNA</span>
-              <span className="text-foreground/70"> v1 </span>
-              <span className="text-primary">|</span>
-              <span className="text-foreground/70"> sha256:a3f2b1... </span>
-              <span className="text-primary">|</span>
-              <span className="text-foreground/70"> identity:uuid </span>
-              <span className="text-primary">|</span>
-              <span className="text-foreground/70"> governance:strict </span>
-              <span className="text-primary">|</span>
-              <span className="text-secondary"> payload:substrate</span>
-            </div>
+            <pre className="font-mono text-xs text-muted-foreground leading-relaxed overflow-x-auto">
+{`{
+  `}<span className="text-accent">"ddna_header"</span>{`: {
+    "ddna_version": "1.1",
+    "edm_version": "0.4.1",
+    "payload_type": "edm.v0.4.1",
+    "consent_basis": "explicit_consent",
+    "jurisdiction": "AU",
+    "audit_chain": [ ... ]
+  },
+  `}<span className="text-secondary">"edm_payload"</span>{`: {
+    "meta": { ... }, "core": { ... },
+    "constellation": { ... }, "milky_way": { ... },
+    "gravity": { ... }, "impulse": { ... },
+    "governance": { ... }, "telemetry": { ... },
+    "system": { ... }, "crosswalks": { ... }
+  },
+  `}<span className="text-primary">"proof"</span>{`: {
+    "type": "DataIntegrityProof",
+    "cryptosuite": "eddsa-jcs-2022",
+    "verificationMethod": "did:key:z6Mk...",
+    "proofValue": "z3FXQeKv..."
+  }
+}`}
+            </pre>
           </div>
         </div>
       </div>

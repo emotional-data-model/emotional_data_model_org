@@ -1,35 +1,35 @@
-import { AlertCircle, Brain, Database, Info, Scale, Shield } from "lucide-react";
+import { Brain, Database, EyeOff, Gauge, Info, Shield } from "lucide-react";
 
 const reasons = [
   {
     icon: Brain,
     title: "Emotional Representation Missing",
-    description: "Current AI systems lack structured frameworks for representing emotional states as explicit, subject-provided data.",
+    description: "Structured affective context has no common schema across systems.",
   },
   {
-    icon: AlertCircle,
-    title: "LLM Drift",
-    description: "Without stable emotional anchors, language models drift from their original affective context over time.",
+    icon: Gauge,
+    title: "No Intrinsic Significance Model",
+    description: "Affective information lacks a native model for importance, persistence, or influence.",
   },
   {
     icon: Database,
     title: "No Stable Substrate",
-    description: "Emotional data requires a persistent, schema-governed substrate that survives model upgrades and vendor changes.",
+    description: "Emotional data does not survive model upgrades, vendors, or architectures.",
   },
   {
     icon: Shield,
     title: "Ungoverned Memory",
-    description: "Emotional memory in AI is not model-governed, leading to inconsistent and unreliable affective recall.",
+    description: "Consent, jurisdiction, retention, and rights are not embedded in emotional data itself.",
   },
   {
-    icon: Scale,
-    title: "Regulatory Compliance",
-    description: "EDM provides representational infrastructure compatible with EU AI Act Article 5(1)(f) requirements, which restrict AI systems that infer emotions from biometric signals. EDM operates on explicitly expressed content rather than inferred states.",
+    icon: EyeOff,
+    title: "Provenance Blindness",
+    description: "Systems cannot reliably determine who issued emotional context, when, or under what authority.",
   },
   {
     icon: Info,
     title: "Interpretation vs Inference",
-    description: "Inference derives emotional states from involuntary signals—facial expressions, voice patterns, physiological data. Interpretation structures emotional content from explicitly provided text. EDM operates in the interpretation domain.",
+    description: "Emotional meaning is inferred from signals rather than structured from explicitly provided content.",
   },
 ];
 
@@ -45,7 +45,7 @@ const WhySection = () => {
             Why EDM Exists
           </h2>
           <p className="text-muted-foreground text-lg">
-            No common schema exists for representing emotional context across AI systems. EDM defines one.
+            No common schema exists for representing affective context across AI systems. EDM defines one.
           </p>
         </div>
 

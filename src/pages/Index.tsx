@@ -4,7 +4,6 @@ import HeroSection from "@/components/sections/HeroSection";
 import WhySection from "@/components/sections/WhySection";
 import WhatSection from "@/components/sections/WhatSection";
 import DdnaSection from "@/components/sections/DdnaSection";
-import SubstrateSection from "@/components/sections/SubstrateSection";
 import UseCasesSection from "@/components/sections/UseCasesSection";
 import DownloadsSection from "@/components/sections/DownloadsSection";
 import VersionSection from "@/components/sections/VersionSection";
@@ -21,7 +20,6 @@ const Index = () => {
       <WhatSection />
       <div className="section-divider" />
       <DdnaSection />
-      <SubstrateSection />
       <div className="section-divider" />
       <UseCasesSection />
       <DownloadsSection />
