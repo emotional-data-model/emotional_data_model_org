@@ -31,6 +31,12 @@ const Footer = () => {
                   deepadata.com
                 </a>
               </p>
+              <a
+                href="/llms.txt"
+                className="text-xs text-muted-foreground/50 hover:text-muted-foreground transition-colors"
+              >
+                For AI agents: llms.txt
+              </a>
             </div>
           </div>
 

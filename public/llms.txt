@@ -1,0 +1,62 @@
+# emotionaldatamodel.org
+
+> The Emotional Data Model (EDM) is an open protocol that defines a governed,
+> schema-bound representational format for externalising affective context as
+> a deterministic, model-agnostic data object.
+
+EDM provides 10 domains and 96 fields for encoding affect, context, and
+governance metadata. Artifacts are encapsulated in the .ddna envelope, a
+byte-stable container providing canonical serialisation, integrity guarantees,
+and immutable governance attachment.
+
+EDM is not a diagnostic tool, emotion recogniser, or biometric system.
+Artifacts are issued from explicitly expressed content only.
+
+## Specification
+
+- Whitepaper (PDF): https://zenodo.org/records/17808878
+- DOI: https://doi.org/10.5281/zenodo.17808652
+- Version: v0.4.1 (January 2026)
+- Authors: Jason Harvey (DeepaData Pty Ltd)
+- License: CC BY 4.0 (whitepaper), MIT (tooling)
+
+## Schema
+
+- Canonical schema: https://github.com/deepadata/deepadata-edm-spec/blob/main/schema/edm.v0.4.schema.json
+- Domain fragments: https://github.com/deepadata/deepadata-edm-spec/tree/main/schema/fragments
+- Example artifacts: https://github.com/deepadata/deepadata-edm-spec/tree/main/examples
+
+## Reference Implementation
+
+- deepadata-edm-spec (MIT): https://github.com/deepadata/deepadata-edm-spec
+  Canonical schema, validation, and examples.
+
+- deepadata-ddna-tools (MIT): https://github.com/deepadata/deepadata-ddna-tools
+  Seal, verify, and inspect .ddna envelopes.
+
+- deepadata-edm-sdk (MIT): https://github.com/deepadata/deepadata-edm-sdk
+  Generate EDM artifacts from text.
+
+- deepadata-edm-mcp-server (MIT): https://github.com/deepadata/deepadata-edm-mcp-server
+  Model Context Protocol adapter for AI integrations.
+
+## Domains
+
+The EDM schema defines 10 mandatory top-level domains:
+
+- meta: identity and provenance
+- core: narrative structure (anchor, spark, wound, fuel, bridge, echo)
+- constellation: affective topology (emotion, archetype, relational dynamics)
+- milky_way: contextual framing (who, where, when)
+- gravity: salience and persistence (weight, decay, recurrence)
+- impulse: motivational orientation (drive, urgency, directionality)
+- governance: consent, jurisdiction, retention, and subject rights
+- telemetry: extraction confidence and model metadata
+- system: embeddings and compute boundary
+- crosswalks: external taxonomy mappings
+
+## Contact
+
+- Website: https://emotionaldatamodel.org
+- Email: contact@emotionaldatamodel.org
+- Commercial services: https://deepadata.com
