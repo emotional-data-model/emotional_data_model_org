@@ -61,7 +61,7 @@ const WhatSection = () => {
             </div>
 
             <div className="relative">
-              <div className="border-gradient p-8 font-mono text-sm">
+              <div className="border-gradient p-4 md:p-8 font-mono text-sm">
                 <div className="text-muted-foreground mb-2">// EDM v0.4.1 Domain Structure</div>
                 <pre className="text-foreground/90 overflow-x-auto text-xs">
 {`{
@@ -79,7 +79,7 @@ const WhatSection = () => {
                 </pre>
               </div>
 
-              <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-1">
+              <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1">
                 {domainLegend.map((item) => (
                   <div key={item.domain} className="flex items-center gap-2 text-xs">
                     <span className="font-mono text-primary">{item.domain}</span>

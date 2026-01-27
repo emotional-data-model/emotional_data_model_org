@@ -42,7 +42,9 @@ const Footer = () => {
 
           <div className="flex items-center gap-4">
             <a
-              href="#"
+              href="https://github.com/deepadata/deepadata-edm-spec"
+              target="_blank"
+              rel="noopener noreferrer"
               className="p-2 text-muted-foreground hover:text-foreground transition-colors"
               aria-label="GitHub"
             >
