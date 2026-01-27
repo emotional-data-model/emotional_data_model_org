@@ -60,8 +60,8 @@ const WhatSection = () => {
               </div>
             </div>
 
-            <div className="relative">
-              <div className="border-gradient p-4 md:p-8 font-mono text-sm">
+            <div className="relative min-w-0">
+              <div className="border-gradient p-4 md:p-8 font-mono text-sm overflow-hidden">
                 <div className="text-muted-foreground mb-2">// EDM v0.4.1 Domain Structure</div>
                 <pre className="text-foreground/90 overflow-x-auto text-xs">
 {`{
