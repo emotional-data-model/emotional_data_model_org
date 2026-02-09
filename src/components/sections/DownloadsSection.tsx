@@ -42,11 +42,6 @@ const repos = [
     description: "MCP adapter for AI assistants",
     href: "https://github.com/deepadata/deepadata-edm-mcp-server",
   },
-  {
-    title: "deepadata-vitapass-sdk",
-    description: "VitaPass consent rail SDK",
-    href: "https://github.com/deepadata/deepadata-vitapass-sdk",
-  },
 ];
 
 const DownloadsSection = () => {
