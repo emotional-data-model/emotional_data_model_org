@@ -3,15 +3,15 @@ import { Check, Copy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
 
-const citation = `Harvey, Jason. "The Emotional Data Model (EDM): A Schema-First Protocol for Emotional Representation, Governance, and AI Memory Integrity. v0.4.1." Zenodo (2025). DOI: 10.5281/zenodo.17808652`;
+const citation = `Harvey, Jason. "The Emotional Data Model (EDM): A Schema-First Protocol for Emotional Representation, Governance, and AI Memory Integrity. v0.5.0." Zenodo (2026). DOI: 10.5281/zenodo.18541956`;
 
-const bibtex = `@misc{harvey2025edm,
+const bibtex = `@misc{harvey2026edm,
   author = {Harvey, Jason},
   title = {The Emotional Data Model (EDM): A Schema-First Protocol for Emotional Representation, Governance, and AI Memory Integrity},
-  version = {0.4.1},
-  year = {2025},
+  version = {0.5.0},
+  year = {2026},
   publisher = {Zenodo},
-  doi = {10.5281/zenodo.17808652}
+  doi = {10.5281/zenodo.18541956}
 }`;
 
 const CitationSection = () => {
@@ -44,14 +44,14 @@ const CitationSection = () => {
 
         <div className="max-w-3xl mx-auto space-y-6">
           {/* Plain text citation */}
-          <div className="border-gradient p-6">
+          <div className="bg-primary rounded-lg p-6">
             <div className="flex items-center justify-between mb-4">
-              <span className="text-xs font-mono text-muted-foreground">Plain Text</span>
+              <span className="text-xs font-mono text-white/70">Plain Text</span>
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => copyToClipboard(citation, "Plain text")}
-                className="gap-2"
+                className="gap-2 text-white hover:text-white hover:bg-white/20"
               >
                 {copied === "Plain text" ? (
                   <Check className="w-4 h-4 text-secondary" />
@@ -61,18 +61,18 @@ const CitationSection = () => {
                 Copy
               </Button>
             </div>
-            <p className="text-sm text-foreground/90 leading-relaxed">{citation}</p>
+            <p className="text-sm text-white/90 leading-relaxed">{citation}</p>
           </div>
 
           {/* BibTeX citation */}
-          <div className="border-gradient p-6">
+          <div className="bg-primary rounded-lg p-6">
             <div className="flex items-center justify-between mb-4">
-              <span className="text-xs font-mono text-muted-foreground">BibTeX</span>
+              <span className="text-xs font-mono text-white/70">BibTeX</span>
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => copyToClipboard(bibtex, "BibTeX")}
-                className="gap-2"
+                className="gap-2 text-white hover:text-white hover:bg-white/20"
               >
                 {copied === "BibTeX" ? (
                   <Check className="w-4 h-4 text-secondary" />
@@ -82,7 +82,7 @@ const CitationSection = () => {
                 Copy
               </Button>
             </div>
-            <pre className="text-sm font-mono text-foreground/80 overflow-x-auto whitespace-pre-wrap">
+            <pre className="text-sm font-mono text-white/80 overflow-x-auto whitespace-pre-wrap">
               {bibtex}
             </pre>
           </div>

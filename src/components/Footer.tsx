@@ -11,7 +11,7 @@ const Footer = () => {
             <div className="h-8 w-px bg-border hidden md:block" />
             <div className="flex flex-col items-center md:items-start gap-1">
               <p className="text-sm text-muted-foreground">
-                © 2025 EDM Initiative. Open protocol.
+                © 2026 EDM Initiative. Open protocol.
               </p>
               <a
                 href="mailto:contact@emotionaldatamodel.org"
@@ -20,7 +20,7 @@ const Footer = () => {
                 <Mail className="w-3 h-3" />
                 contact@emotionaldatamodel.org
               </a>
-              <p className="text-xs text-muted-foreground/70">
+              <p className="text-xs text-muted-foreground">
                 For hosted APIs and certification services, visit{" "}
                 <a
                   href="https://deepadata.com"
@@ -33,7 +33,7 @@ const Footer = () => {
               </p>
               <a
                 href="/llms.txt"
-                className="text-xs text-muted-foreground/50 hover:text-muted-foreground transition-colors"
+                className="text-xs text-muted-foreground hover:text-foreground transition-colors"
               >
                 For AI agents: llms.txt
               </a>

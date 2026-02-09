@@ -62,10 +62,10 @@ const WhatSection = () => {
 
             <div className="relative min-w-0">
               <div className="border-gradient p-4 md:p-8 font-mono text-sm overflow-hidden">
-                <div className="text-muted-foreground mb-2">// EDM v0.4.1 Domain Structure</div>
+                <div className="text-muted-foreground mb-2">// EDM v0.5.0 Domain Structure</div>
                 <pre className="text-foreground/90 overflow-x-auto text-xs">
 {`{
-  "meta": { "id": "...", "version": "0.4.1" },
+  "meta": { "id": "...", "version": "0.5.0" },
   "core": { "anchor": "...", "spark": "...", "wound": "..." },
   "constellation": { "emotion_primary": "...", "emotion_subtone": [] },
   "milky_way": { "location_context": "...", "associated_people": [] },
@@ -83,7 +83,7 @@ const WhatSection = () => {
                 {domainLegend.map((item) => (
                   <div key={item.domain} className="flex items-center gap-2 text-xs">
                     <span className="font-mono text-primary">{item.domain}</span>
-                    <span className="text-muted-foreground/70">— {item.description}</span>
+                    <span className="text-muted-foreground">— {item.description}</span>
                   </div>
                 ))}
               </div>

@@ -22,6 +22,17 @@ const versions = [
       "Clarified non-inferential positioning",
     ],
   },
+  {
+    version: "v0.5.0",
+    status: "published",
+    date: "February 2026",
+    changes: [
+      "Enum expansions: emotion_primary (13), relational_dynamics (15), drive_state (9), coping_style (7), adaptation_trajectory (5)",
+      "Identity binding renamed from AuraID to VitaPass",
+      "W3C Data Integrity Proofs (eddsa-jcs-2022)",
+      "New Zenodo DOI (10.5281/zenodo.18541956)",
+    ],
+  },
 ];
 
 const VersionSection = () => {
@@ -54,22 +65,22 @@ const VersionSection = () => {
                 )}
               </div>
               
-              <div className="border-gradient p-6">
+              <div className="bg-primary rounded-lg p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="font-mono font-semibold text-lg">{v.version}</span>
+                  <span className="font-mono font-semibold text-lg text-white">{v.version}</span>
                   <span className={`text-xs px-2 py-1 rounded-full font-mono ${
-                    v.status === "published" 
-                      ? "bg-primary/20 text-primary" 
-                      : "bg-muted text-muted-foreground"
+                    v.status === "published"
+                      ? "bg-white/20 text-white"
+                      : "bg-white/10 text-white/70"
                   }`}>
                     {v.status}
                   </span>
-                  <span className="text-xs text-muted-foreground ml-auto">{v.date}</span>
+                  <span className="text-xs text-white/70 ml-auto">{v.date}</span>
                 </div>
                 <ul className="space-y-2">
                   {v.changes.map((change) => (
-                    <li key={change} className="text-sm text-muted-foreground flex items-center gap-2">
-                      <div className="w-1 h-1 rounded-full bg-muted-foreground" />
+                    <li key={change} className="text-sm text-white/80 flex items-center gap-2">
+                      <div className="w-1 h-1 rounded-full bg-white/60" />
                       {change}
                     </li>
                   ))}

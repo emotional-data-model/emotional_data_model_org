@@ -6,9 +6,9 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background effects */}
-      <div className="glow-orb w-[600px] h-[600px] bg-primary/30 -top-40 -left-40" />
-      <div className="glow-orb w-[500px] h-[500px] bg-secondary/20 -bottom-20 -right-20" style={{ animationDelay: '-10s' }} />
-      <div className="glow-orb w-[400px] h-[400px] bg-accent/20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style={{ animationDelay: '-5s' }} />
+      <div className="glow-orb w-[600px] h-[600px] bg-primary/8 -top-40 -left-40" />
+      <div className="glow-orb w-[500px] h-[500px] bg-primary/5 -bottom-20 -right-20" style={{ animationDelay: '-10s' }} />
+      <div className="glow-orb w-[400px] h-[400px] bg-secondary/5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style={{ animationDelay: '-5s' }} />
       
       <div className="container relative z-10 px-6 py-24 lg:py-32">
         <div className="max-w-4xl mx-auto text-center">
@@ -27,21 +27,21 @@ const HeroSection = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up" style={{ animationDelay: '0.3s' }}>
             <Button variant="hero" size="lg" className="group" asChild>
-              <a href="https://zenodo.org/records/17808878" target="_blank" rel="noopener noreferrer">
+              <a href="https://zenodo.org/records/18541956" target="_blank" rel="noopener noreferrer">
                 <Download className="w-5 h-5 transition-transform group-hover:-translate-y-0.5" />
-                Download v0.4.1 (PDF)
+                Download v0.5.0 (PDF)
               </a>
             </Button>
             <Button variant="hero-outline" size="lg" className="group" asChild>
-              <a href="https://zenodo.org/records/17808878" target="_blank" rel="noopener noreferrer">
+              <a href="https://zenodo.org/records/18541956" target="_blank" rel="noopener noreferrer">
                 <ExternalLink className="w-5 h-5" />
                 View on Zenodo
               </a>
             </Button>
           </div>
-          
-          <p className="text-xs font-mono text-muted-foreground/50 mt-6 animate-fade-up" style={{ animationDelay: '0.4s' }}>
-            DOI: 10.5281/zenodo.17808652
+
+          <p className="text-xs font-mono text-muted-foreground mt-6 animate-fade-up" style={{ animationDelay: '0.4s' }}>
+            DOI: 10.5281/zenodo.18541956
           </p>
         </div>
       </div>

@@ -13,11 +13,11 @@ const DdnaSection = () => {
     <section id="ddna" className="relative py-24 lg:py-32">
       <div className="container px-6">
         <div className="max-w-4xl mx-auto text-center mb-16">
-          <span className="text-xs font-mono text-accent tracking-widest uppercase mb-4 block">
+          <span className="text-xs font-mono text-primary tracking-widest uppercase mb-4 block">
             The Container
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            The <span className="font-mono text-accent">.ddna</span> Envelope
+            The <span className="font-mono text-secondary">.ddna</span> Envelope
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
             A secure, self-describing container format for affective context that ensures integrity, provenance, and long-range interoperability.
@@ -27,19 +27,19 @@ const DdnaSection = () => {
             <h4 className="text-sm font-semibold text-foreground mb-3">Issuance pathways</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li className="flex items-start gap-2">
-                <span className="text-accent mt-1.5">•</span>
+                <span className="text-primary mt-1.5">•</span>
                 <span><span className="font-medium text-foreground">Subject-initiated</span> — the subject provides the content and initiates issuance.</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-accent mt-1.5">•</span>
+                <span className="text-primary mt-1.5">•</span>
                 <span><span className="font-medium text-foreground">Delegated</span> — an authorised delegate issues on behalf of the subject under recorded authority.</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-accent mt-1.5">•</span>
+                <span className="text-primary mt-1.5">•</span>
                 <span><span className="font-medium text-foreground">Retrospective</span> — prior text can be structured into EDM with explicit subject authorisation.</span>
               </li>
             </ul>
-            <p className="text-xs text-muted-foreground/80 mt-3">
+            <p className="text-xs text-muted-foreground mt-3">
               Each issuance event records its pathway and associated governance metadata in-band.
             </p>
           </div>
@@ -49,12 +49,12 @@ const DdnaSection = () => {
           {properties.map((prop) => (
             <div
               key={prop.label}
-              className="flex items-center gap-3 bg-muted/30 border border-border rounded-full px-5 py-3 hover:border-accent/50 transition-colors duration-300"
+              className="flex items-center gap-3 bg-primary rounded-full px-5 py-3 hover:bg-primary/90 transition-colors duration-300"
             >
-              <prop.icon className="w-4 h-4 text-accent" />
+              <prop.icon className="w-4 h-4 text-white" />
               <div className="text-left">
-                <span className="text-sm font-medium">{prop.label}</span>
-                <span className="text-xs text-muted-foreground ml-2 hidden sm:inline">
+                <span className="text-sm font-medium text-white">{prop.label}</span>
+                <span className="text-xs text-white/80 ml-2 hidden sm:inline">
                   {prop.description}
                 </span>
               </div>
@@ -72,10 +72,10 @@ const DdnaSection = () => {
             </div>
             <pre className="font-mono text-xs text-muted-foreground leading-relaxed overflow-x-auto">
 {`{
-  `}<span className="text-accent">"ddna_header"</span>{`: {
+  `}<span className="text-primary">"ddna_header"</span>{`: {
     "ddna_version": "1.1",
-    "edm_version": "0.4.1",
-    "payload_type": "edm.v0.4.1",
+    "edm_version": "0.5.0",
+    "payload_type": "edm.v0.5.0",
     "consent_basis": "explicit_consent",
     "jurisdiction": "AU",
     "audit_chain": [ ... ]

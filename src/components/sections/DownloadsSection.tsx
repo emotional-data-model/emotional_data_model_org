@@ -4,8 +4,8 @@ const downloads = [
   {
     icon: FileText,
     title: "Whitepaper PDF",
-    description: "Complete EDM v0.4.1 specification",
-    href: "https://zenodo.org/records/17808878",
+    description: "Complete EDM v0.5.0 specification",
+    href: "https://zenodo.org/records/18541956",
   },
   {
     icon: FileJson,
@@ -29,8 +29,23 @@ const repos = [
   },
   {
     title: "deepadata-ddna-tools",
-    description: "Verify and inspect .ddna envelopes",
+    description: "Seal, verify, and inspect .ddna envelopes",
     href: "https://github.com/deepadata/deepadata-ddna-tools",
+  },
+  {
+    title: "deepadata-edm-sdk",
+    description: "LLM-assisted EDM extraction SDK",
+    href: "https://github.com/deepadata/deepadata-edm-sdk",
+  },
+  {
+    title: "deepadata-edm-mcp-server",
+    description: "MCP adapter for AI assistants",
+    href: "https://github.com/deepadata/deepadata-edm-mcp-server",
+  },
+  {
+    title: "deepadata-vitapass-sdk",
+    description: "VitaPass consent rail SDK",
+    href: "https://github.com/deepadata/deepadata-vitapass-sdk",
   },
 ];
 
@@ -39,7 +54,7 @@ const DownloadsSection = () => {
     <section id="downloads" className="relative py-24 lg:py-32 bg-gradient-to-b from-transparent via-muted/20 to-transparent">
       <div className="container px-6">
         <div className="max-w-4xl mx-auto text-center mb-16">
-          <span className="text-xs font-mono text-accent tracking-widest uppercase mb-4 block">
+          <span className="text-xs font-mono text-primary tracking-widest uppercase mb-4 block">
             Resources
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -57,20 +72,20 @@ const DownloadsSection = () => {
               href={download.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="border-gradient p-6 hover:bg-muted/20 transition-colors duration-300 group block"
+              className="bg-primary rounded-lg p-6 hover:bg-primary/90 transition-colors duration-300 group block"
             >
-              <download.icon className="w-10 h-10 text-accent mb-4" />
-              <h3 className="font-semibold mb-1">{download.title}</h3>
-              <p className="text-sm text-muted-foreground mb-4">{download.description}</p>
+              <download.icon className="w-10 h-10 text-white mb-4" />
+              <h3 className="font-semibold mb-1 text-white">{download.title}</h3>
+              <p className="text-sm text-white/80 mb-4">{download.description}</p>
               <div className="flex items-center justify-end">
-                <Download className="w-4 h-4 text-muted-foreground group-hover:text-accent transition-colors" />
+                <Download className="w-4 h-4 text-white/60 group-hover:text-white transition-colors" />
               </div>
             </a>
           ))}
         </div>
 
         <div className="max-w-4xl mx-auto mt-12">
-          <span className="text-xs font-mono text-muted-foreground tracking-widest uppercase mb-6 block text-center">
+          <span className="text-xs font-mono text-primary tracking-widest uppercase mb-6 block text-center">
             Reference Implementation
           </span>
           <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
@@ -80,16 +95,16 @@ const DownloadsSection = () => {
                 href={repo.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border-gradient p-6 hover:bg-muted/20 transition-colors duration-300 group block"
+                className="bg-primary rounded-lg p-6 hover:bg-primary/90 transition-colors duration-300 group block"
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <Github className="w-5 h-5 text-accent" />
-                  <h3 className="font-semibold font-mono text-sm">{repo.title}</h3>
-                  <span className="text-xs font-mono text-muted-foreground bg-muted/50 rounded px-2 py-0.5 ml-auto">MIT</span>
+                  <Github className="w-5 h-5 text-white" />
+                  <h3 className="font-semibold font-mono text-sm text-white">{repo.title}</h3>
+                  <span className="text-xs font-mono text-white/80 bg-white/20 rounded px-2 py-0.5 ml-auto">MIT</span>
                 </div>
-                <p className="text-sm text-muted-foreground mb-3">{repo.description}</p>
+                <p className="text-sm text-white/80 mb-3">{repo.description}</p>
                 <div className="flex items-center justify-end">
-                  <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-accent transition-colors" />
+                  <ExternalLink className="w-3.5 h-3.5 text-white/60 group-hover:text-white transition-colors" />
                 </div>
               </a>
             ))}
