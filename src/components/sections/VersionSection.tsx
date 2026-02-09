@@ -13,16 +13,6 @@ const versions = [
     ],
   },
   {
-    version: "v0.4.1",
-    status: "published",
-    date: "January 2026",
-    changes: [
-      "DOI registration (10.5281/zenodo.17808652)",
-      "Documentation refinements",
-      "Clarified non-inferential positioning",
-    ],
-  },
-  {
     version: "v0.5.0",
     status: "published",
     date: "February 2026",
