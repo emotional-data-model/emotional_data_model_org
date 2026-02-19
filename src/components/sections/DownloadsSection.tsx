@@ -28,9 +28,9 @@ const repos = [
     href: "https://github.com/deepadata/deepadata-edm-spec",
   },
   {
-    title: "deepadata-ddna-tools",
-    description: "Seal, verify, and inspect .ddna envelopes",
-    href: "https://github.com/deepadata/deepadata-ddna-tools",
+    title: "deepadata-ddna-reader",
+    description: "Verify and inspect .ddna envelopes",
+    href: "https://github.com/deepadata/deepadata-ddna-reader",
   },
   {
     title: "deepadata-edm-sdk",

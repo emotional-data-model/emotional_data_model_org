@@ -31,8 +31,8 @@ Artifacts are issued from explicitly expressed content only.
 - deepadata-edm-spec (MIT): https://github.com/deepadata/deepadata-edm-spec
   Canonical schema, validation, and examples.
 
-- deepadata-ddna-tools (MIT): https://github.com/deepadata/deepadata-ddna-tools
-  Seal, verify, and inspect .ddna envelopes.
+- deepadata-ddna-reader (MIT): https://github.com/deepadata/deepadata-ddna-reader
+  Verify and inspect .ddna envelopes.
 
 - deepadata-edm-sdk (MIT): https://github.com/deepadata/deepadata-edm-sdk
   Generate EDM artifacts from text.
