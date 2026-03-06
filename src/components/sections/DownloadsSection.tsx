@@ -4,8 +4,8 @@ const downloads = [
   {
     icon: FileText,
     title: "Whitepaper PDF",
-    description: "Complete EDM v0.5.0 specification",
-    href: "https://zenodo.org/records/18541956",
+    description: "Complete EDM v0.5.1 specification",
+    href: "https://zenodo.org/records/18883392",
   },
   {
     icon: FileJson,

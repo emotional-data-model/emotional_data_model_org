@@ -27,13 +27,13 @@ const HeroSection = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up" style={{ animationDelay: '0.3s' }}>
             <Button variant="hero" size="lg" className="group" asChild>
-              <a href="https://zenodo.org/records/18541956" target="_blank" rel="noopener noreferrer">
+              <a href="https://zenodo.org/records/18883392" target="_blank" rel="noopener noreferrer">
                 <Download className="w-5 h-5 transition-transform group-hover:-translate-y-0.5" />
-                Download v0.5.0 (PDF)
+                Download v0.5.1 (PDF)
               </a>
             </Button>
             <Button variant="hero-outline" size="lg" className="group" asChild>
-              <a href="https://zenodo.org/records/18541956" target="_blank" rel="noopener noreferrer">
+              <a href="https://zenodo.org/records/18883392" target="_blank" rel="noopener noreferrer">
                 <ExternalLink className="w-5 h-5" />
                 View on Zenodo
               </a>
@@ -41,7 +41,7 @@ const HeroSection = () => {
           </div>
 
           <p className="text-xs font-mono text-muted-foreground mt-6 animate-fade-up" style={{ animationDelay: '0.4s' }}>
-            DOI: 10.5281/zenodo.18541956
+            DOI: 10.5281/zenodo.18883392
           </p>
         </div>
       </div>

@@ -2,14 +2,18 @@ import { CheckCircle2, Circle } from "lucide-react";
 
 const versions = [
   {
-    version: "v0.4.0",
-    status: "published",
-    date: "December 2025",
+    version: "v0.5.1",
+    status: "current",
+    date: "March 2026",
     changes: [
-      "Initial public release",
-      "Core schema specification (10 domains, 96 fields)",
-      ".ddna envelope format",
-      "Affective manifold foundations",
+      "Additive patch release with nine canonical enumeration values across five fields",
+      "emotion_primary: shame",
+      "relational_dynamics: grandparent_grandchild, friend, couple, colleague",
+      "narrative_archetype: orphan",
+      "tether_type: identity, self",
+      "motivational_orientation: authenticity",
+      "Validated through end-to-end corpus evaluation",
+      "New Zenodo DOI (10.5281/zenodo.18883392)",
     ],
   },
   {
@@ -21,6 +25,17 @@ const versions = [
       "Identity binding renamed from AuraID to VitaPass",
       "W3C Data Integrity Proofs (eddsa-jcs-2022)",
       "New Zenodo DOI (10.5281/zenodo.18541956)",
+    ],
+  },
+  {
+    version: "v0.4.0",
+    status: "published",
+    date: "December 2025",
+    changes: [
+      "Initial public release",
+      "Core schema specification (10 domains, 96 fields)",
+      ".ddna envelope format",
+      "Affective manifold foundations",
     ],
   },
 ];
