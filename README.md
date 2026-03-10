@@ -17,7 +17,7 @@ and strict separation between representation, persistence, and computation layer
 ## Specification
 
 - Whitepaper: https://zenodo.org/records/18883392
-- GitHub (spec): https://github.com/deepadata/deepadata-edm-spec
+- GitHub (spec): https://github.com/emotional-data-model/edm-spec
 - Contact: contact@emotionaldatamodel.org
 
 ## Tech Stack

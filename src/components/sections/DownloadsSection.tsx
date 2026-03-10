@@ -11,13 +11,13 @@ const downloads = [
     icon: FileJson,
     title: "Schema JSON",
     description: "Canonical schema with 10 domain fragments",
-    href: "https://github.com/deepadata/deepadata-edm-spec/tree/main/schema",
+    href: "https://github.com/emotional-data-model/edm-spec/tree/main/schema",
   },
   {
     icon: FileCode,
     title: "Example Artifacts",
     description: "Validated .ddna.json examples",
-    href: "https://github.com/deepadata/deepadata-edm-spec/tree/main/examples",
+    href: "https://github.com/emotional-data-model/edm-spec/tree/main/examples",
   },
 ];
 
@@ -25,7 +25,7 @@ const repos = [
   {
     title: "deepadata-edm-spec",
     description: "Canonical schema, validation, and examples",
-    href: "https://github.com/deepadata/deepadata-edm-spec",
+    href: "https://github.com/emotional-data-model/edm-spec",
   },
   {
     title: "deepadata-ddna-reader",
