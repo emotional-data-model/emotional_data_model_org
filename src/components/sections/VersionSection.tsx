@@ -2,8 +2,20 @@ import { CheckCircle2, Circle } from "lucide-react";
 
 const versions = [
   {
-    version: "v0.5.1",
+    version: "v0.6.0",
     status: "current",
+    date: "March 2026",
+    changes: [
+      "Implementation Profiles: Essential (24 fields), Extended (50 fields), Full (96 fields)",
+      "FHIR-aligned three-schema model with canonical hosting",
+      "Profile-aware validation and conformance levels",
+      "Canonical schema URLs at deepadata.com/schemas/edm/v0.6.0/",
+      "New Zenodo DOI (10.5281/zenodo.18951891)",
+    ],
+  },
+  {
+    version: "v0.5.1",
+    status: "published",
     date: "March 2026",
     changes: [
       "Additive patch release with nine canonical enumeration values across five fields",
@@ -13,7 +25,7 @@ const versions = [
       "tether_type: identity, self",
       "motivational_orientation: authenticity",
       "Validated through end-to-end corpus evaluation",
-      "New Zenodo DOI (10.5281/zenodo.18883392)",
+      "Zenodo DOI: 10.5281/zenodo.18883392",
     ],
   },
   {

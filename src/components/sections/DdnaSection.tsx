@@ -74,8 +74,8 @@ const DdnaSection = () => {
 {`{
   `}<span className="text-primary">"ddna_header"</span>{`: {
     "ddna_version": "1.1",
-    "edm_version": "0.5.1",
-    "payload_type": "edm.v0.5.1",
+    "edm_version": "0.6.0",
+    "payload_type": "edm.v0.6.0",
     "consent_basis": "explicit_consent",
     "jurisdiction": "AU",
     "audit_chain": [ ... ]
