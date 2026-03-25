@@ -18,9 +18,9 @@ Artifacts are issued from explicitly expressed content only.
 
 ## Specification
 
-- Whitepaper (PDF): https://zenodo.org/records/18951891
-- DOI: https://doi.org/10.5281/zenodo.18951891
-- Version: v0.6.0 (March 2026)
+- Whitepaper (PDF): https://zenodo.org/records/19211903
+- DOI: https://doi.org/10.5281/zenodo.19211903
+- Version: v0.7.0 (March 2026)
 - Authors: Jason Harvey (DeepaData Pty Ltd)
 - License: CC BY 4.0 (whitepaper), MIT (tooling)
 
