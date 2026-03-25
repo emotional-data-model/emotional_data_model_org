@@ -62,10 +62,10 @@ const WhatSection = () => {
 
             <div className="relative min-w-0">
               <div className="border-gradient p-4 md:p-8 font-mono text-sm overflow-hidden">
-                <div className="text-muted-foreground mb-2">// EDM v0.6.0 Domain Structure</div>
+                <div className="text-muted-foreground mb-2">// EDM v0.7.0 Domain Structure</div>
                 <pre className="text-foreground/90 overflow-x-auto text-xs">
 {`{
-  "meta": { "id": "...", "version": "0.6.0" },
+  "meta": { "id": "...", "version": "0.7.0" },
   "core": { "anchor": "...", "spark": "...", "wound": "..." },
   "constellation": { "emotion_primary": "...", "emotion_subtone": [] },
   "milky_way": { "location_context": "...", "associated_people": [] },

@@ -10,13 +10,13 @@ data object. EDM defines a domain-complete manifold comprising ten mandatory
 structural domains and 96 explicitly defined fields, with in-band governance
 and strict separation between representation, persistence, and computation layers.
 
-**Current version:** v0.6.0 (March 2026)
-**DOI:** 10.5281/zenodo.18951891
+**Current version:** v0.7.0 (March 2026)
+**DOI:** 10.5281/zenodo.19211903
 **License:** MIT
 
 ## Specification
 
-- Whitepaper: https://zenodo.org/records/18951891
+- Whitepaper: https://zenodo.org/records/19211903
 - GitHub (spec): https://github.com/emotional-data-model/edm-spec
 - Contact: contact@emotionaldatamodel.org
 

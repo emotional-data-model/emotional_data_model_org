@@ -2,15 +2,31 @@ import { CheckCircle2, Circle } from "lucide-react";
 
 const versions = [
   {
-    version: "v0.6.0",
+    version: "v0.7.0",
     status: "current",
+    date: "March 2026",
+    changes: [
+      "arc_type field for narrative arc classification (Extended + Full profiles)",
+      "extensions domain for partner-namespaced semantic enrichments",
+      "Domain portability classification (Section 3.9)",
+      "Certified eligibility extended to Extended + Full profiles",
+      "3 new emotion_primary values: disappointment, relief, frustration",
+      "2 new narrative_arc values: loss, confrontation",
+      "Two-tier enum model: canonical values + open extension",
+      "4 field deprecations: legacy_embed, alignment_delta, sector_weights, HMD_v2_memory_type",
+      "Zenodo DOI: 10.5281/zenodo.19211903",
+    ],
+  },
+  {
+    version: "v0.6.0",
+    status: "published",
     date: "March 2026",
     changes: [
       "Implementation Profiles: Essential (24 fields), Extended (50 fields), Full (96 fields)",
       "FHIR-aligned three-schema model with canonical hosting",
       "Profile-aware validation and conformance levels",
-      "Canonical schema URLs at deepadata.com/schemas/edm/v0.6.0/",
-      "New Zenodo DOI (10.5281/zenodo.18951891)",
+      "Canonical schema hosting for all three profiles",
+      "Zenodo DOI: 10.5281/zenodo.18951891",
     ],
   },
   {
