@@ -23,19 +23,19 @@ const downloads = [
 
 const repos = [
   {
-    title: "deepadata-edm-spec",
+    title: "edm-spec",
     description: "Canonical schema, validation, and examples",
     href: "https://github.com/emotional-data-model/edm-spec",
   },
   {
-    title: "deepadata-ddna-reader",
+    title: "ddna-reader",
     description: "Verify and inspect .ddna envelopes",
-    href: "https://github.com/deepadata/deepadata-ddna-reader",
+    href: "https://github.com/emotional-data-model/ddna-reader",
   },
   {
-    title: "deepadata-edm-sdk",
-    description: "LLM-assisted EDM extraction SDK",
-    href: "https://github.com/deepadata/deepadata-edm-sdk",
+    title: "ddna-tools",
+    description: "CLI for sealing, verifying, and inspecting artifacts",
+    href: "https://github.com/emotional-data-model/ddna-tools",
   },
 ];
 
