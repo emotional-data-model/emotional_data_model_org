@@ -37,11 +37,6 @@ const repos = [
     description: "LLM-assisted EDM extraction SDK",
     href: "https://github.com/deepadata/deepadata-edm-sdk",
   },
-  {
-    title: "deepadata-edm-mcp-server",
-    description: "MCP adapter for AI assistants",
-    href: "https://github.com/deepadata/deepadata-edm-mcp-server",
-  },
 ];
 
 const DownloadsSection = () => {
