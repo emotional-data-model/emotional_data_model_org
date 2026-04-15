@@ -10,7 +10,7 @@ verification widget, and specification references.
 
 - **License:** MIT
 - **Live at:** emotionaldatamodel.org
-- **Current EDM version displayed:** v0.7.0
+- **Current EDM version displayed:** v0.8.0
 
 ## Role in the DeepaData System
 
