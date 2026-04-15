@@ -2,8 +2,20 @@ import { CheckCircle2, Circle } from "lucide-react";
 
 const versions = [
   {
-    version: "v0.7.0",
+    version: "v0.8.0",
     status: "current",
+    date: "April 2026",
+    changes: [
+      "Partner Profiles: partner: prefix for meta.profile (ADR-0017)",
+      "2 new arc_type values: gratitude, authenticity",
+      "Certification Minimum Bar formalised (Extended + Full)",
+      "meta.profile two-tier enum: canonical profiles + partner: prefix",
+      "Zenodo DOI: 10.5281/zenodo.19555166",
+    ],
+  },
+  {
+    version: "v0.7.0",
+    status: "published",
     date: "March 2026",
     changes: [
       "arc_type field for narrative arc classification (Extended + Full profiles)",
