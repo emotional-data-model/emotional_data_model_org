@@ -11,7 +11,7 @@ const EDMLogo = ({ className = "" }: { className?: string }) => {
       </div>
       <div className="flex flex-col">
         <span className="text-lg font-semibold tracking-tight text-foreground">EDM</span>
-        <span className="text-[10px] font-mono text-muted-foreground tracking-wider">v0.7.0</span>
+        <span className="text-[10px] font-mono text-muted-foreground tracking-wider">v0.8.0</span>
       </div>
     </div>
   );
