@@ -36,17 +36,14 @@ Profile schemas (choose based on meta.profile value):
 
 ## Reference Implementation
 
-- deepadata-edm-spec (MIT): https://github.com/emotional-data-model/edm-spec
+- edm-spec (MIT): https://github.com/emotional-data-model/edm-spec
   Canonical schema, validation, and examples.
 
-- deepadata-ddna-reader (MIT): https://github.com/deepadata/deepadata-ddna-reader
+- ddna-tools (MIT): https://github.com/emotional-data-model/ddna-tools
+  Seal and sign .ddna envelopes locally.
+
+- ddna-reader (MIT): https://github.com/emotional-data-model/ddna-reader
   Verify and inspect .ddna envelopes.
-
-- deepadata-edm-sdk (MIT): https://github.com/deepadata/deepadata-edm-sdk
-  Generate EDM artifacts from text.
-
-- deepadata-edm-mcp-server (MIT): https://github.com/deepadata/deepadata-edm-mcp-server
-  Model Context Protocol adapter for AI integrations.
 
 ## Domains
 

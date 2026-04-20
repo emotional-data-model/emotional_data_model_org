@@ -1,0 +1,1142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Emotional Data Model — v0.8.0</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<script>
+const TWEAKS = /*EDITMODE-BEGIN*/{
+  "palette": "steel",
+  "density": "comfortable",
+  "showManifold": true,
+  "numberedSections": true
+}/*EDITMODE-END*/;
+</script>
+<style>
+  :root {
+    /* Steel (default) — true neutral dark, blue primary, sage accent */
+    --bg:          oklch(0.155 0.006 250);
+    --bg-elev:     oklch(0.185 0.007 250);
+    --bg-sunk:     oklch(0.125 0.005 250);
+    --ink:         oklch(0.955 0.004 250);
+    --ink-dim:     oklch(0.72  0.006 250);
+    --ink-mute:    oklch(0.52  0.008 250);
+    --rule:        oklch(0.28  0.008 250);
+    --rule-strong: oklch(0.38  0.010 250);
+    --primary:     oklch(0.68  0.090 240);
+    --primary-dim: oklch(0.46  0.070 240);
+    --accent:      oklch(0.70  0.055 160);
+    --warn:        oklch(0.72  0.085 70);
+
+    --font-sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+    --font-serif: "Newsreader", Georgia, serif;
+
+    --col: 1180px;
+    --pad-y: 96px;
+    --pad-y-sm: 56px;
+  }
+  html[data-palette="graphite"] {
+    --bg: oklch(0.14 0.002 250); --bg-elev: oklch(0.175 0.003 250); --bg-sunk: oklch(0.11 0.002 250);
+    --primary: oklch(0.82 0.015 250); --primary-dim: oklch(0.55 0.010 250);
+    --accent: oklch(0.75 0.02 60);
+    --rule: oklch(0.27 0.003 250); --rule-strong: oklch(0.38 0.005 250);
+  }
+  html[data-palette="ink"] {
+    --bg: oklch(0.13 0.015 260); --bg-elev: oklch(0.17 0.017 260); --bg-sunk: oklch(0.10 0.015 260);
+    --primary: oklch(0.72 0.095 220); --primary-dim: oklch(0.50 0.080 220);
+    --accent: oklch(0.74 0.070 190);
+    --rule: oklch(0.28 0.015 260); --rule-strong: oklch(0.40 0.020 260);
+  }
+  html[data-palette="paper"] {
+    --bg: oklch(0.975 0.004 250); --bg-elev: oklch(0.995 0.002 250); --bg-sunk: oklch(0.94 0.005 250);
+    --ink: oklch(0.20 0.010 250); --ink-dim: oklch(0.38 0.010 250); --ink-mute: oklch(0.55 0.010 250);
+    --rule: oklch(0.84 0.008 250); --rule-strong: oklch(0.72 0.010 250);
+    --primary: oklch(0.48 0.090 240); --primary-dim: oklch(0.62 0.080 240);
+    --accent: oklch(0.50 0.055 160);
+  }
+  html[data-density="compact"] { --pad-y: 64px; --pad-y-sm: 40px; }
+  html[data-density="dense"]   { --pad-y: 48px; --pad-y-sm: 32px; }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "ss01", "cv11";
+  }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: color-mix(in oklch, var(--primary) 40%, transparent); }
+
+  .wrap { max-width: var(--col); margin: 0 auto; padding: 0 32px; }
+  .mono { font-family: var(--font-mono); font-feature-settings: "zero", "ss01"; }
+  .dim { color: var(--ink-dim); }
+  .mute { color: var(--ink-mute); }
+
+  /* ───── Top meta strip (W3C/IETF feel) ───── */
+  .meta-strip {
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-dim);
+    letter-spacing: 0.02em;
+  }
+  .meta-strip .row {
+    display: flex; align-items: center; gap: 24px;
+    height: 32px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .meta-strip .row > div { display: flex; align-items: center; gap: 20px; }
+  .meta-strip b { color: var(--ink); font-weight: 500; }
+  .status-dot {
+    display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); margin-right: 6px; transform: translateY(-1px);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--accent) 22%, transparent);
+  }
+
+  /* ───── Nav ───── */
+  nav.top {
+    position: sticky; top: 0; z-index: 40;
+    background: color-mix(in oklch, var(--bg) 88%, transparent);
+    backdrop-filter: saturate(140%) blur(10px);
+    -webkit-backdrop-filter: saturate(140%) blur(10px);
+    border-bottom: 1px solid var(--rule);
+  }
+  nav.top .row {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 62px;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 600; letter-spacing: -0.01em; }
+  .brand-mark {
+    width: 22px; height: 22px; position: relative;
+  }
+  .brand-mark svg { width: 100%; height: 100%; display: block; }
+  .brand .v { font-family: var(--font-mono); font-size: 11px; font-weight: 500; color: var(--ink-dim); padding: 2px 6px; border: 1px solid var(--rule); border-radius: 3px; margin-left: 2px; }
+  .navlinks { display: flex; gap: 28px; font-size: 13.5px; color: var(--ink-dim); }
+  .navlinks a { position: relative; padding: 4px 0; }
+  .navlinks a:hover { color: var(--ink); }
+  .navlinks a.active { color: var(--ink); }
+  .navlinks a.active::after { content:""; position: absolute; left: 0; right: 0; bottom: -19px; height: 1px; background: var(--primary); }
+  .nav-cta { display: flex; gap: 10px; align-items: center; }
+
+  /* ───── Buttons ───── */
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-sans); font-size: 13.5px; font-weight: 500;
+    padding: 9px 14px; border-radius: 4px;
+    border: 1px solid transparent;
+    cursor: pointer; transition: all .15s ease;
+    line-height: 1;
+  }
+  .btn-primary { background: var(--primary); color: oklch(0.12 0.005 250); border-color: var(--primary); }
+  .btn-primary:hover { filter: brightness(1.08); }
+  .btn-ghost { background: transparent; color: var(--ink); border-color: var(--rule-strong); }
+  .btn-ghost:hover { border-color: var(--ink-dim); background: var(--bg-elev); }
+  .btn-sm { padding: 6px 10px; font-size: 12px; }
+  .btn .arr { font-family: var(--font-mono); opacity: 0.7; }
+
+  /* ───── Section shell ───── */
+  section.spec { padding: var(--pad-y) 0; border-bottom: 1px solid var(--rule); position: relative; }
+  section.spec.flush { border-bottom: none; }
+  .sec-head { display: grid; grid-template-columns: 180px 1fr; gap: 48px; margin-bottom: 40px; align-items: start; }
+  .sec-num { font-family: var(--font-mono); font-size: 12px; color: var(--ink-mute); letter-spacing: 0.06em; text-transform: uppercase; padding-top: 6px; }
+  .sec-num b { display: block; color: var(--primary); font-weight: 500; margin-bottom: 6px; font-size: 13px; letter-spacing: 0.04em; }
+  .sec-title { font-size: 32px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 600; margin: 0 0 14px; max-width: 720px; }
+  .sec-lede { font-size: 17px; line-height: 1.55; color: var(--ink-dim); max-width: 680px; margin: 0; }
+
+  html[data-numbered="off"] .sec-num b { display: none; }
+
+  /* ───── HERO ───── */
+  .hero { padding: 88px 0 64px; position: relative; overflow: hidden; }
+  .hero-grid {
+    display: grid; grid-template-columns: 1.1fr 1fr;
+    gap: 64px; align-items: center;
+  }
+  @media (max-width: 960px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .sec-head { grid-template-columns: 1fr; gap: 16px; }
+  }
+  .hero-label {
+    font-family: var(--font-mono); font-size: 11px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--primary); margin-bottom: 20px;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .hero-label .bar { width: 20px; height: 1px; background: var(--primary); display: inline-block; }
+  h1.hero-h {
+    font-size: 52px; line-height: 1.05; letter-spacing: -0.03em;
+    font-weight: 600; margin: 0 0 24px;
+  }
+  h1.hero-h em { font-style: normal; color: var(--ink-dim); }
+  .hero-sub {
+    font-size: 18px; line-height: 1.55; color: var(--ink-dim);
+    max-width: 560px; margin: 0 0 32px;
+  }
+  .hero-formula {
+    font-family: var(--font-mono); font-size: 15px;
+    padding: 14px 18px;
+    border: 1px solid var(--rule); border-radius: 4px;
+    background: var(--bg-sunk);
+    margin-bottom: 28px;
+    display: inline-flex; align-items: baseline; gap: 12px;
+    max-width: 100%;
+  }
+  .hero-formula .lbl { font-size: 10.5px; color: var(--ink-mute); letter-spacing: 0.1em; text-transform: uppercase; margin-right: 4px; }
+  .hero-formula .eq { color: var(--ink); }
+  .hero-formula .eq u { text-decoration: none; color: var(--primary); }
+  .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero-meta {
+    margin-top: 44px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    border-top: 1px solid var(--rule); padding-top: 22px; max-width: 620px;
+  }
+  .hero-meta .m { display: flex; flex-direction: column; gap: 4px; }
+  .hero-meta .k { font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-mute); letter-spacing: 0.08em; text-transform: uppercase; }
+  .hero-meta .v { font-family: var(--font-mono); font-size: 13px; color: var(--ink); }
+
+  /* ───── Manifold graphic ───── */
+  .manifold-card {
+    border: 1px solid var(--rule);
+    background: linear-gradient(180deg, var(--bg-elev), var(--bg-sunk));
+    border-radius: 6px;
+    padding: 28px;
+    position: relative;
+    aspect-ratio: 1 / 1.05;
+  }
+  .manifold-card::before {
+    content: "FIG. 01 — EDM MANIFOLD TOPOLOGY";
+    position: absolute; top: 14px; left: 18px;
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em;
+    color: var(--ink-mute);
+  }
+  .manifold-card::after {
+    content: "R(x) = (Σ, E)";
+    position: absolute; top: 14px; right: 18px;
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.05em;
+    color: var(--ink-mute);
+  }
+  .manifold-card svg { width: 100%; height: 100%; display: block; }
+
+  /* ───── Cards / Domains ───── */
+  .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
+  @media (max-width: 960px) { .grid-5 { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .grid-5 { grid-template-columns: 1fr; } }
+  .domain {
+    padding: 24px 22px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+    background: var(--bg-elev);
+    display: flex; flex-direction: column; gap: 12px; min-height: 220px;
+    position: relative;
+    transition: background .2s;
+  }
+  .domain:hover { background: color-mix(in oklch, var(--bg-elev) 70%, var(--primary) 8%); }
+  .domain:last-child { border-right: none; }
+  .grid-5 .domain:nth-last-child(-n+5) { border-bottom: none; }
+  .domain .num { font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-mute); letter-spacing: 0.08em; }
+  .domain .mark { height: 28px; margin-bottom: 4px; display: flex; align-items: center; }
+  .domain h4 { margin: 0; font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
+  .domain .ns { font-family: var(--font-mono); font-size: 11px; color: var(--primary); }
+  .domain p { margin: 0; font-size: 13px; line-height: 1.5; color: var(--ink-dim); }
+
+  /* ───── Layer diagram (three-tier architecture) ───── */
+  .layers {
+    display: grid; grid-template-columns: 1fr; gap: 14px;
+  }
+  .layer {
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 22px 24px;
+    background: var(--bg-elev);
+    display: grid; grid-template-columns: 140px 1fr auto; gap: 24px; align-items: center;
+    position: relative;
+  }
+  .layer .lyr-n { font-family: var(--font-mono); font-size: 11px; color: var(--ink-mute); letter-spacing: 0.08em; }
+  .layer .lyr-n b { display: block; font-weight: 500; color: var(--primary); font-size: 13px; margin-top: 4px; }
+  .layer h3 { margin: 0 0 6px; font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
+  .layer p { margin: 0; font-size: 13.5px; color: var(--ink-dim); line-height: 1.5; }
+  .layer .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip { font-family: var(--font-mono); font-size: 10.5px; padding: 4px 8px; border: 1px solid var(--rule-strong); color: var(--ink-dim); border-radius: 3px; white-space: nowrap; }
+  .layer.l1 { border-left: 3px solid var(--primary); }
+  .layer.l2 { border-left: 3px solid var(--accent); }
+  .layer.l3 { border-left: 3px solid var(--ink-mute); border-style: dashed; }
+  .layer.l3 { background: transparent; }
+  .layer-conn { display: flex; justify-content: center; font-family: var(--font-mono); font-size: 10px; color: var(--ink-mute); letter-spacing: 0.1em; }
+  .layer-conn span { display: inline-flex; align-items: center; gap: 10px; }
+  .layer-conn i { width: 1px; height: 14px; background: var(--rule-strong); display: inline-block; }
+
+  /* ───── Conformance matrix ───── */
+  table.matrix {
+    width: 100%; border-collapse: collapse;
+    border: 1px solid var(--rule);
+    font-size: 13.5px;
+    background: var(--bg-elev);
+    border-radius: 4px; overflow: hidden;
+  }
+  table.matrix th, table.matrix td {
+    padding: 14px 18px; text-align: left;
+    border-bottom: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  table.matrix thead th {
+    background: var(--bg-sunk);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    font-weight: 500;
+  }
+  table.matrix tbody th {
+    font-family: var(--font-mono); font-weight: 500; font-size: 12px;
+    color: var(--ink); background: var(--bg-sunk); width: 160px;
+  }
+  table.matrix tbody th small { display:block; color: var(--ink-mute); font-size: 10.5px; letter-spacing: 0.06em; margin-top: 4px; }
+  table.matrix td:last-child, table.matrix th:last-child { border-right: none; }
+  table.matrix tr:last-child td, table.matrix tr:last-child th { border-bottom: none; }
+  .cell-yes { color: var(--ink); }
+  .cell-yes::before { content: "●"; color: var(--primary); margin-right: 8px; font-size: 10px; vertical-align: 2px; }
+  .cell-opt { color: var(--ink-dim); }
+  .cell-opt::before { content: "○"; color: var(--ink-mute); margin-right: 8px; font-size: 10px; vertical-align: 2px; }
+  .cell-no { color: var(--ink-mute); }
+  .cell-no::before { content: "—"; margin-right: 8px; color: var(--ink-mute); }
+
+  /* ───── Envelope schematic ───── */
+  .envelope {
+    border: 1px solid var(--rule); border-radius: 6px;
+    background: var(--bg-elev);
+    padding: 32px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+    align-items: center;
+  }
+  @media (max-width: 900px) { .envelope { grid-template-columns: 1fr; } }
+  .env-diagram svg { width: 100%; display: block; }
+  .env-copy h3 { margin: 0 0 10px; font-size: 20px; letter-spacing: -0.01em; font-weight: 600; }
+  .env-copy .extn {
+    font-family: var(--font-mono); font-size: 12px;
+    display: inline-block; padding: 3px 8px; border: 1px solid var(--primary-dim);
+    color: var(--primary); border-radius: 3px; margin-bottom: 14px;
+  }
+  .env-copy ul { margin: 14px 0 0; padding: 0; list-style: none; }
+  .env-copy li { padding: 10px 0; border-top: 1px dotted var(--rule-strong); display: grid; grid-template-columns: 120px 1fr; gap: 16px; font-size: 13.5px; }
+  .env-copy li:last-child { border-bottom: 1px dotted var(--rule-strong); }
+  .env-copy li .k { font-family: var(--font-mono); font-size: 11px; color: var(--ink-mute); letter-spacing: 0.04em; text-transform: uppercase; padding-top: 2px; }
+  .env-copy li .v { color: var(--ink-dim); line-height: 1.5; }
+  .env-copy li .v b { color: var(--ink); font-weight: 500; }
+
+  /* ───── Versions table ───── */
+  table.versions { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table.versions th, table.versions td { text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--rule); }
+  table.versions thead th {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink-mute); font-weight: 500; border-bottom: 1px solid var(--rule-strong);
+  }
+  table.versions td.ver { font-family: var(--font-mono); color: var(--primary); }
+  table.versions tr.current td { background: color-mix(in oklch, var(--primary) 6%, transparent); }
+  .badge-status {
+    font-family: var(--font-mono); font-size: 10.5px; padding: 3px 7px; border-radius: 3px;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .badge-status.published { background: color-mix(in oklch, var(--accent) 18%, transparent); color: var(--accent); border: 1px solid color-mix(in oklch, var(--accent) 35%, transparent); }
+  .badge-status.archived { color: var(--ink-mute); border: 1px solid var(--rule-strong); }
+  .badge-status.draft { color: var(--warn); border: 1px solid color-mix(in oklch, var(--warn) 35%, transparent); }
+
+  /* ───── Downloads ───── */
+  .downloads { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
+  @media (max-width: 820px) { .downloads { grid-template-columns: 1fr; } }
+  .dl {
+    padding: 22px; border-right: 1px solid var(--rule); background: var(--bg-elev);
+    display: flex; flex-direction: column; gap: 10px;
+    transition: background .15s;
+  }
+  .dl:last-child { border-right: none; }
+  .dl:hover { background: color-mix(in oklch, var(--bg-elev) 82%, var(--primary) 12%); cursor: pointer; }
+  .dl .t { display: flex; align-items: center; gap: 12px; }
+  .dl .ext { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; color: var(--primary); padding: 3px 6px; border: 1px solid var(--primary-dim); border-radius: 2px; }
+  .dl h4 { margin: 0; font-size: 14.5px; font-weight: 600; }
+  .dl p { margin: 0; font-size: 12.5px; color: var(--ink-dim); line-height: 1.5; }
+  .dl .f { font-family: var(--font-mono); font-size: 11px; color: var(--ink-mute); margin-top: auto; display: flex; justify-content: space-between; padding-top: 12px; border-top: 1px dotted var(--rule-strong); }
+
+  /* ───── Footer ───── */
+  footer.spec-footer {
+    padding: 56px 0 40px;
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+    color: var(--ink-dim);
+  }
+  footer.spec-footer .cols { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 44px; }
+  @media (max-width: 820px) { footer.spec-footer .cols { grid-template-columns: 1fr 1fr; } }
+  footer.spec-footer h5 { margin: 0 0 14px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mute); font-weight: 500; }
+  footer.spec-footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  footer.spec-footer a:hover { color: var(--ink); }
+  footer.spec-footer .btm { display: flex; justify-content: space-between; align-items: center; padding-top: 28px; border-top: 1px solid var(--rule); font-family: var(--font-mono); font-size: 11px; color: var(--ink-mute); letter-spacing: 0.04em; flex-wrap: wrap; gap: 12px; }
+
+  /* ───── Tweaks panel ───── */
+  #tweaks {
+    position: fixed; right: 20px; bottom: 20px; z-index: 100;
+    width: 280px; background: var(--bg-elev); border: 1px solid var(--rule-strong); border-radius: 6px;
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.4);
+    font-size: 12.5px;
+    display: none;
+    overflow: hidden;
+  }
+  #tweaks.open { display: block; }
+  #tweaks header {
+    padding: 12px 16px; border-bottom: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-dim);
+  }
+  #tweaks .body { padding: 16px; display: flex; flex-direction: column; gap: 18px; }
+  #tweaks .field { display: flex; flex-direction: column; gap: 8px; }
+  #tweaks label { font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-mute); letter-spacing: 0.08em; text-transform: uppercase; }
+  #tweaks .swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  #tweaks .sw { height: 36px; border: 1px solid var(--rule-strong); border-radius: 3px; cursor: pointer; position: relative; font-family: var(--font-mono); font-size: 10px; color: var(--ink-dim); display: flex; align-items: flex-end; padding: 4px 6px; }
+  #tweaks .sw.active { outline: 1px solid var(--primary); outline-offset: 1px; }
+  #tweaks .seg { display: grid; grid-template-columns: repeat(3,1fr); border: 1px solid var(--rule-strong); border-radius: 3px; overflow: hidden; }
+  #tweaks .seg button { background: transparent; color: var(--ink-dim); border: none; padding: 7px 4px; font-family: var(--font-mono); font-size: 11px; cursor: pointer; border-right: 1px solid var(--rule-strong); }
+  #tweaks .seg button:last-child { border-right: none; }
+  #tweaks .seg button.active { background: var(--primary); color: var(--bg); }
+  #tweaks .tog { display: flex; justify-content: space-between; align-items: center; }
+  #tweaks .tog button { background: var(--bg-sunk); color: var(--ink-dim); border: 1px solid var(--rule-strong); border-radius: 3px; padding: 5px 10px; font-family: var(--font-mono); font-size: 11px; cursor: pointer; }
+  #tweaks .tog button.on { background: var(--primary); color: var(--bg); border-color: var(--primary); }
+
+  /* small utility */
+  .kbd { font-family: var(--font-mono); font-size: 10.5px; padding: 2px 6px; border: 1px solid var(--rule-strong); border-bottom-width: 2px; border-radius: 3px; color: var(--ink-dim); }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ META STRIP ============================================================ -->
+<div class="meta-strip">
+  <div class="wrap row">
+    <div>
+      <span><b>W3C-style Technical Specification</b></span>
+      <span><span class="status-dot"></span>Status: <b style="color: var(--accent)">Published Working Draft</b></span>
+      <span>Date: <b>March 2026</b></span>
+    </div>
+    <div>
+      <span>DOI: <b>10.5281/zenodo.19555166</b></span>
+      <span>This version: <b>v0.8.0</b></span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ NAV ============================================================ -->
+<nav class="top">
+  <div class="wrap row">
+    <a class="brand" href="#">
+      <span class="brand-mark">
+        <!-- Original EDM mark: three concentric nodes suggesting the R(x)=(Σ,E) composite -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <rect x="2.5" y="2.5" width="19" height="19" rx="1.5" stroke="currentColor"/>
+          <circle cx="9" cy="12" r="3" stroke="var(--primary)"/>
+          <circle cx="15" cy="12" r="3" stroke="currentColor"/>
+          <line x1="9" y1="12" x2="15" y2="12" stroke="var(--primary)"/>
+        </svg>
+      </span>
+      <span>Emotional Data Model</span>
+      <span class="v mono">v0.8.0</span>
+    </a>
+    <div class="navlinks">
+      <a href="#motivation">§1 Motivation</a>
+      <a href="#architecture" class="active">§2 Architecture</a>
+      <a href="#domains">§3 Domains</a>
+      <a href="#conformance">§4 Conformance</a>
+      <a href="#envelope">§5 .ddna</a>
+      <a href="#versions">Versions</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-ghost btn-sm" href="#downloads">Download</a>
+      <a class="btn btn-primary btn-sm" href="#spec">Read Spec <span class="arr">→</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================ HERO ============================================================ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-label"><span class="bar"></span>Technical Specification · EDM v0.8.0</div>
+      <h1 class="hero-h">
+        A governed, model-agnostic substrate for <em>affective context</em> in AI systems.
+      </h1>
+      <p class="hero-sub">
+        EDM externalises emotional, narrative, and motivational context as a deterministic, schema-bound data object — decoupled from any single model, vendor, or inference engine.
+      </p>
+      <div class="hero-formula">
+        <span class="lbl">Core</span>
+        <span class="eq">R(x) = ( <u>Σ(x)</u> , <u>E(x)</u> )</span>
+      </div>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#spec">Read the specification <span class="arr">→</span></a>
+        <a class="btn btn-ghost" href="#downloads">Download whitepaper (PDF)</a>
+      </div>
+      <div class="hero-meta">
+        <div class="m"><span class="k">Schema</span><span class="v">v0.8.0</span></div>
+        <div class="m"><span class="k">Domains</span><span class="v">10</span></div>
+        <div class="m"><span class="k">Envelope</span><span class="v">.ddna</span></div>
+        <div class="m"><span class="k">License</span><span class="v">CC&nbsp;BY&nbsp;4.0</span></div>
+      </div>
+    </div>
+
+    <!-- ========= MANIFOLD GRAPHIC ========= -->
+    <div class="manifold-card" id="manifold-card">
+      <svg viewBox="0 0 480 500" xmlns="http://www.w3.org/2000/svg" aria-label="EDM manifold diagram">
+        <defs>
+          <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+            <path d="M24 0 H0 V24" fill="none" stroke="currentColor" stroke-width="0.4" opacity="0.08"/>
+          </pattern>
+          <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 Z" fill="currentColor" opacity="0.6"/>
+          </marker>
+        </defs>
+        <rect x="0" y="0" width="480" height="500" fill="url(#grid)"/>
+
+        <!-- Layer 3: Compute (dashed) -->
+        <g font-family="var(--font-mono)" font-size="9" fill="currentColor">
+          <rect x="28" y="34" width="424" height="82" rx="3" fill="none" stroke="currentColor" stroke-opacity="0.35" stroke-dasharray="3 3"/>
+          <text x="40" y="52" opacity="0.5" letter-spacing="1">LAYER 03 · COMPUTE</text>
+          <g opacity="0.8">
+            <rect x="44" y="66" width="88" height="38" rx="2" fill="none" stroke="currentColor" stroke-opacity="0.4" stroke-dasharray="2 2"/>
+            <text x="88" y="89" text-anchor="middle" font-size="10">Retrieval</text>
+            <rect x="140" y="66" width="88" height="38" rx="2" fill="none" stroke="currentColor" stroke-opacity="0.4" stroke-dasharray="2 2"/>
+            <text x="184" y="89" text-anchor="middle" font-size="10">Appraisal</text>
+            <rect x="236" y="66" width="88" height="38" rx="2" fill="none" stroke="currentColor" stroke-opacity="0.4" stroke-dasharray="2 2"/>
+            <text x="280" y="89" text-anchor="middle" font-size="10">Agentic</text>
+            <rect x="332" y="66" width="112" height="38" rx="2" fill="none" stroke="currentColor" stroke-opacity="0.4" stroke-dasharray="2 2"/>
+            <text x="388" y="89" text-anchor="middle" font-size="10">Vector search</text>
+          </g>
+        </g>
+
+        <!-- Connector: reads/computes over -->
+        <g stroke="currentColor" stroke-opacity="0.4" fill="none">
+          <line x1="240" y1="116" x2="240" y2="138" marker-end="url(#arr)"/>
+        </g>
+        <text x="248" y="132" font-family="var(--font-mono)" font-size="9" fill="currentColor" opacity="0.5" letter-spacing="0.5">reads / computes over</text>
+
+        <!-- Layer 2: Persistence (.ddna envelope) -->
+        <g>
+          <rect x="28" y="148" width="424" height="94" rx="3" fill="color-mix(in oklch, var(--accent) 6%, transparent)" stroke="var(--accent)" stroke-opacity="0.55"/>
+          <text x="40" y="166" font-family="var(--font-mono)" font-size="9" fill="var(--accent)" letter-spacing="1">LAYER 02 · PERSISTENCE · .DDNA ENVELOPE</text>
+          <g font-family="var(--font-mono)" font-size="10" fill="currentColor">
+            <rect x="44" y="180" width="98" height="48" rx="2" fill="var(--bg)" stroke="var(--accent)" stroke-opacity="0.45"/>
+            <text x="93" y="200" text-anchor="middle" font-weight="600">Byte-stable</text>
+            <text x="93" y="214" text-anchor="middle" opacity="0.6" font-size="9">container</text>
+
+            <rect x="150" y="180" width="98" height="48" rx="2" fill="var(--bg)" stroke="var(--accent)" stroke-opacity="0.45"/>
+            <text x="199" y="200" text-anchor="middle" font-weight="600">Governance</text>
+            <text x="199" y="214" text-anchor="middle" opacity="0.6" font-size="9">enforcement</text>
+
+            <rect x="256" y="180" width="98" height="48" rx="2" fill="var(--bg)" stroke="var(--accent)" stroke-opacity="0.45"/>
+            <text x="305" y="200" text-anchor="middle" font-weight="600">Integrity</text>
+            <text x="305" y="214" text-anchor="middle" opacity="0.6" font-size="9">hash / sign</text>
+
+            <rect x="362" y="180" width="82" height="48" rx="2" fill="var(--bg)" stroke="var(--accent)" stroke-opacity="0.45"/>
+            <text x="403" y="200" text-anchor="middle" font-weight="600">AuraID</text>
+            <text x="403" y="214" text-anchor="middle" opacity="0.6" font-size="9">identity</text>
+          </g>
+        </g>
+
+        <!-- Connector: encapsulates -->
+        <g stroke="currentColor" stroke-opacity="0.4" fill="none">
+          <line x1="240" y1="242" x2="240" y2="264" marker-end="url(#arr)"/>
+        </g>
+        <text x="248" y="258" font-family="var(--font-mono)" font-size="9" fill="currentColor" opacity="0.5" letter-spacing="0.5">encapsulates</text>
+
+        <!-- Layer 1: Representation — the manifold itself -->
+        <g>
+          <rect x="28" y="274" width="424" height="206" rx="3" fill="color-mix(in oklch, var(--primary) 8%, transparent)" stroke="var(--primary)" stroke-opacity="0.6"/>
+          <text x="40" y="292" font-family="var(--font-mono)" font-size="9" fill="var(--primary)" letter-spacing="1">LAYER 01 · REPRESENTATION · AFFECTIVE MANIFOLD</text>
+
+          <!-- 5 domain nodes connected to center -->
+          <g fill="var(--bg)" stroke="var(--primary)" stroke-width="1.2">
+            <!-- center -->
+            <circle cx="240" cy="390" r="26" stroke-width="1.5"/>
+            <!-- satellite nodes: top, left, right, bottom-left, bottom-right -->
+            <circle cx="240" cy="318" r="18"/>
+            <circle cx="116" cy="360" r="18"/>
+            <circle cx="364" cy="360" r="18"/>
+            <circle cx="154" cy="452" r="18"/>
+            <circle cx="326" cy="452" r="18"/>
+          </g>
+
+          <!-- connections -->
+          <g stroke="var(--primary)" stroke-opacity="0.5" fill="none">
+            <line x1="240" y1="336" x2="240" y2="364"/>
+            <line x1="134" y1="360" x2="214" y2="384"/>
+            <line x1="346" y1="360" x2="266" y2="384"/>
+            <line x1="170" y1="444" x2="220" y2="406"/>
+            <line x1="310" y1="444" x2="260" y2="406"/>
+            <!-- inter-node arcs (suggesting manifold) -->
+            <path d="M 134 360 Q 150 310, 222 318" stroke-opacity="0.18" stroke-dasharray="2 3"/>
+            <path d="M 346 360 Q 330 310, 258 318" stroke-opacity="0.18" stroke-dasharray="2 3"/>
+            <path d="M 170 444 Q 130 430, 134 378" stroke-opacity="0.18" stroke-dasharray="2 3"/>
+            <path d="M 310 444 Q 350 430, 346 378" stroke-opacity="0.18" stroke-dasharray="2 3"/>
+            <path d="M 170 444 Q 240 480, 310 444" stroke-opacity="0.18" stroke-dasharray="2 3"/>
+          </g>
+
+          <!-- labels -->
+          <g font-family="var(--font-mono)" font-size="9" fill="currentColor">
+            <text x="240" y="393" text-anchor="middle" font-weight="600" fill="var(--primary)">core</text>
+            <text x="240" y="315" text-anchor="middle" fill="var(--primary)" font-size="8.5">narrative</text>
+            <text x="116" y="362" text-anchor="middle" fill="var(--primary)" font-size="8.5">constel.</text>
+            <text x="364" y="362" text-anchor="middle" fill="var(--primary)" font-size="8.5">milky_way</text>
+            <text x="154" y="454" text-anchor="middle" fill="var(--primary)" font-size="8.5">gravity</text>
+            <text x="326" y="454" text-anchor="middle" fill="var(--primary)" font-size="8.5">impulse</text>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ §1 MOTIVATION ============================================================ -->
+<section class="spec" id="motivation">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">§1<b>Motivation</b></div>
+      <div>
+        <h2 class="sec-title">Today, affective context lives inside the model. That makes it non-portable, non-inspectable, and vulnerable to drift.</h2>
+        <p class="sec-lede">Contemporary LLMs internalise emotional, narrative, and motivational cues transiently within latent activations. Those signals don't survive model updates, vendor migrations, or cross-context transport — and they can't be audited. EDM treats this as a representational deficit, not a tuning problem.</p>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--rule); border-radius: 4px; overflow: hidden;">
+      <div style="padding: 24px; border-right: 1px solid var(--rule); background: var(--bg-elev);">
+        <div class="mono" style="font-size:11px; color: var(--ink-mute); letter-spacing: 0.08em; margin-bottom: 12px;">§1.1 · DEFICIT</div>
+        <h3 style="margin: 0 0 10px; font-size: 16px; font-weight: 600;">Representational</h3>
+        <p style="margin: 0; font-size: 13.5px; color: var(--ink-dim);">Emotional state lives as a transient byproduct of inference — not as structured data. It cannot be inspected, compared, or preserved.</p>
+      </div>
+      <div style="padding: 24px; border-right: 1px solid var(--rule); background: var(--bg-elev);">
+        <div class="mono" style="font-size:11px; color: var(--ink-mute); letter-spacing: 0.08em; margin-bottom: 12px;">§1.2 · GAP</div>
+        <h3 style="margin: 0 0 10px; font-size: 16px; font-weight: 600;">Sovereignty</h3>
+        <p style="margin: 0; font-size: 13.5px; color: var(--ink-dim);">Governance — jurisdiction, consent, retention — is applied by platforms, not attached to the artifact. Rights evaporate on export.</p>
+      </div>
+      <div style="padding: 24px; background: var(--bg-elev);">
+        <div class="mono" style="font-size:11px; color: var(--ink-mute); letter-spacing: 0.08em; margin-bottom: 12px;">§1.3 · PRINCIPLE</div>
+        <h3 style="margin: 0 0 10px; font-size: 16px; font-weight: 600;">Representation before computation</h3>
+        <p style="margin: 0; font-size: 13.5px; color: var(--ink-dim);">Structure is defined first, independent of any inference engine. Compute reads; it does not redefine.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ §2 ARCHITECTURE ============================================================ -->
+<section class="spec" id="architecture">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">§2<b>Architecture</b></div>
+      <div>
+        <h2 class="sec-title">Three layers, one invariant: representation precedes computation.</h2>
+        <p class="sec-lede">EDM separates what something is (Representation), how it is preserved (Persistence), and what can be done with it (Computation). The boundaries are enforced structurally, not by policy.</p>
+      </div>
+    </div>
+
+    <div class="layers">
+      <div class="layer l3">
+        <div class="lyr-n">LAYER 03<b>Computation</b></div>
+        <div>
+          <h3>External compute — retrieval, appraisal, agentic workflows</h3>
+          <p>Any downstream system reads from the persistence layer. EDM takes no position on the compute model, only on its source of truth.</p>
+        </div>
+        <div class="chips">
+          <span class="chip">retrieval</span>
+          <span class="chip">appraisal</span>
+          <span class="chip">vector-search</span>
+        </div>
+      </div>
+      <div class="layer-conn"><span><i></i>READS / COMPUTES OVER<i></i></span></div>
+      <div class="layer l2">
+        <div class="lyr-n">LAYER 02<b>Persistence</b></div>
+        <div>
+          <h3>.ddna — a byte-stable, governance-bound envelope</h3>
+          <p>Canonical serialisation, integrity guarantees, and immutable governance attachment. Sovereignty travels with the payload.</p>
+        </div>
+        <div class="chips">
+          <span class="chip">canonical</span>
+          <span class="chip">signed</span>
+          <span class="chip">AuraID</span>
+          <span class="chip">jurisdictional</span>
+        </div>
+      </div>
+      <div class="layer-conn"><span><i></i>ENCAPSULATES<i></i></span></div>
+      <div class="layer l1">
+        <div class="lyr-n">LAYER 01<b>Representation</b></div>
+        <div>
+          <h3>EDM schema — the affective manifold</h3>
+          <p>Ten domain-complete structures covering narrative anchors, affective topology, salience geometry, contextual framing, and motivational orientation.</p>
+        </div>
+        <div class="chips">
+          <span class="chip">10 domains</span>
+          <span class="chip">schema-bound</span>
+          <span class="chip">non-inferential</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ §3 DOMAINS ============================================================ -->
+<section class="spec" id="domains">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">§3<b>Affective Manifold</b></div>
+      <div>
+        <h2 class="sec-title">Five core domains, ten total. Each with canonical keys, enumerations, and invariants.</h2>
+        <p class="sec-lede">The manifold is domain-complete: every EDM artifact populates the same structural surface, with no omissions and no inference. Governance domains extend this surface without mutating it.</p>
+      </div>
+    </div>
+
+    <div class="grid-5">
+      <div class="domain">
+        <div class="num">§4.3.1 · CORE</div>
+        <div class="mark">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M3 6 L23 6 M3 13 L18 13 M3 20 L13 20" stroke="var(--primary)"/>
+          </svg>
+        </div>
+        <h4>Narrative Primitives</h4>
+        <div class="ns">core</div>
+        <p>Identity, role, and narrative anchors. The discrete units on which higher-order affect composes.</p>
+      </div>
+      <div class="domain">
+        <div class="num">§4.3.2 · TOPOLOGY</div>
+        <div class="mark">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="6" cy="6" r="1.5" fill="var(--primary)" stroke="none"/>
+            <circle cx="20" cy="7" r="1.5" fill="var(--primary)" stroke="none"/>
+            <circle cx="13" cy="14" r="1.5" fill="var(--primary)" stroke="none"/>
+            <circle cx="7" cy="20" r="1.5" fill="var(--primary)" stroke="none"/>
+            <circle cx="21" cy="19" r="1.5" fill="var(--primary)" stroke="none"/>
+            <path d="M6 6 L13 14 L20 7 M13 14 L7 20 M13 14 L21 19" stroke="var(--primary)" stroke-opacity="0.45"/>
+          </svg>
+        </div>
+        <h4>Emotional Topology</h4>
+        <div class="ns">constellation</div>
+        <p>Relational geometry between affective states. The shape, not the intensity, of emotional configuration.</p>
+      </div>
+      <div class="domain">
+        <div class="num">§4.3.3 · FRAMING</div>
+        <div class="mark">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.2">
+            <ellipse cx="13" cy="13" rx="10" ry="5" stroke="var(--primary)"/>
+            <ellipse cx="13" cy="13" rx="5" ry="10" stroke="var(--primary)" stroke-opacity="0.5"/>
+          </svg>
+        </div>
+        <h4>Contextual Framing</h4>
+        <div class="ns">milky_way</div>
+        <p>Situational, temporal, and social framing under which affect is valid. Without frame, signal is noise.</p>
+      </div>
+      <div class="domain">
+        <div class="num">§4.3.4 · SALIENCE</div>
+        <div class="mark">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="13" cy="13" r="3" fill="var(--primary)" stroke="none"/>
+            <circle cx="13" cy="13" r="7" stroke="var(--primary)" stroke-opacity="0.6"/>
+            <circle cx="13" cy="13" r="11" stroke="var(--primary)" stroke-opacity="0.25"/>
+          </svg>
+        </div>
+        <h4>Salience &amp; Dynamics</h4>
+        <div class="ns">gravity</div>
+        <p>Weight, decay, and pull of each anchor over time. The dynamic field governing what persists and what fades.</p>
+      </div>
+      <div class="domain">
+        <div class="num">§4.3.5 · ORIENTATION</div>
+        <div class="mark">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M5 21 L21 5" stroke="var(--primary)"/>
+            <path d="M21 5 L15 5 M21 5 L21 11" stroke="var(--primary)"/>
+          </svg>
+        </div>
+        <h4>Motivational Orientation</h4>
+        <div class="ns">impulse</div>
+        <p>Direction of intent. What the subject is oriented toward or away from, independent of behavioural expression.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 28px; font-family: var(--font-mono); font-size: 11px; color: var(--ink-mute); display: flex; gap: 24px; flex-wrap: wrap;">
+      <span>+ 5 governance domains: <span style="color:var(--ink-dim)">vitapass · jurisdiction · retention · consent · provenance</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ §4 CONFORMANCE ============================================================ -->
+<section class="spec" id="conformance">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">§4<b>Conformance</b></div>
+      <div>
+        <h2 class="sec-title">Three levels of graduated trust — from development artifacts to certified deployments.</h2>
+        <p class="sec-lede">Conformance is independent of profile scope. Essential, Extended, and Full profiles can each reach any level; Partner profiles compose against the same matrix.</p>
+      </div>
+    </div>
+
+    <table class="matrix">
+      <thead>
+        <tr>
+          <th>Profile</th>
+          <th>Level 1 · Compliant</th>
+          <th>Level 2 · Sealed</th>
+          <th>Level 3 · Certified</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Essential<small>Minimum viable domains</small></th>
+          <td class="cell-yes">Schema-valid</td>
+          <td class="cell-yes">Hash + signature</td>
+          <td class="cell-opt">Third-party attest.</td>
+        </tr>
+        <tr>
+          <th>Extended<small>+ topology, salience</small></th>
+          <td class="cell-yes">Schema-valid</td>
+          <td class="cell-yes">Hash + signature</td>
+          <td class="cell-yes">Third-party attest.</td>
+        </tr>
+        <tr>
+          <th>Full<small>Domain-complete manifold</small></th>
+          <td class="cell-yes">Schema-valid</td>
+          <td class="cell-yes">Hash + signature</td>
+          <td class="cell-yes">Third-party attest.</td>
+        </tr>
+        <tr>
+          <th>Partner<small>Vendor-specific extension</small></th>
+          <td class="cell-yes">Schema-valid</td>
+          <td class="cell-opt">Optional</td>
+          <td class="cell-opt">By agreement</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top: 20px; font-family: var(--font-mono); font-size: 11px; color: var(--ink-mute); display: flex; gap: 24px;">
+      <span>● Required</span><span>○ Optional</span><span>— Not applicable</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ §5 ENVELOPE ============================================================ -->
+<section class="spec" id="envelope">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">§5<b>.ddna Envelope</b></div>
+      <div>
+        <h2 class="sec-title">Representation is preserved by a byte-stable, governance-bound envelope.</h2>
+        <p class="sec-lede">The .ddna envelope binds governance logic — jurisdiction, identity rights, retention — directly to the payload. Compliance persists during transport; it is not reconstructed at the destination.</p>
+      </div>
+    </div>
+
+    <div class="envelope">
+      <div class="env-diagram">
+        <svg viewBox="0 0 420 340" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="dots" width="8" height="8" patternUnits="userSpaceOnUse">
+              <circle cx="1" cy="1" r="0.7" fill="currentColor" opacity="0.18"/>
+            </pattern>
+          </defs>
+
+          <!-- outer envelope -->
+          <rect x="10" y="10" width="400" height="320" rx="4" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+          <text x="24" y="30" font-family="var(--font-mono)" font-size="9" fill="var(--accent)" letter-spacing="1">.DDNA ENVELOPE · BYTE-STABLE</text>
+          <text x="396" y="30" font-family="var(--font-mono)" font-size="9" fill="var(--accent)" letter-spacing="1" text-anchor="end">SEALED</text>
+
+          <!-- governance band -->
+          <rect x="24" y="44" width="372" height="58" rx="2" fill="color-mix(in oklch, var(--accent) 8%, transparent)" stroke="var(--accent)" stroke-opacity="0.4"/>
+          <text x="36" y="62" font-family="var(--font-mono)" font-size="9" fill="var(--accent)" letter-spacing="1">GOVERNANCE HEADER</text>
+          <g font-family="var(--font-mono)" font-size="10" fill="currentColor" opacity="0.85">
+            <text x="36" y="82">vitapass: "aura://…"</text>
+            <text x="36" y="96">jurisdiction: "AU"</text>
+            <text x="220" y="82">retention: "P7Y"</text>
+            <text x="220" y="96">consent: "subject-aligned"</text>
+          </g>
+
+          <!-- payload: EDM artifact with dotted fill -->
+          <rect x="24" y="112" width="372" height="150" rx="2" fill="url(#dots)" stroke="var(--primary)" stroke-opacity="0.55"/>
+          <text x="36" y="130" font-family="var(--font-mono)" font-size="9" fill="var(--primary)" letter-spacing="1">EDM ARTIFACT · R(x) = (Σ, E)</text>
+          <g font-family="var(--font-mono)" font-size="10" fill="currentColor" opacity="0.9">
+            <text x="36" y="152">narrative:   [anchors × n]</text>
+            <text x="36" y="170">constellation: {nodes, edges}</text>
+            <text x="36" y="188">milky_way:   {frame, temporal}</text>
+            <text x="36" y="206">gravity:     {weights, decay}</text>
+            <text x="36" y="224">impulse:     {vectors}</text>
+            <text x="36" y="248" fill="var(--primary)" opacity="0.8">meta.profile: "full"</text>
+          </g>
+
+          <!-- integrity footer -->
+          <rect x="24" y="272" width="372" height="46" rx="2" fill="none" stroke="currentColor" stroke-opacity="0.35"/>
+          <text x="36" y="290" font-family="var(--font-mono)" font-size="9" fill="currentColor" opacity="0.55" letter-spacing="1">INTEGRITY</text>
+          <g font-family="var(--font-mono)" font-size="10" fill="currentColor" opacity="0.85">
+            <text x="36" y="308">sha256: 7f3c…8b2a</text>
+            <text x="220" y="308">sig: ed25519 ✓</text>
+          </g>
+        </svg>
+      </div>
+      <div class="env-copy">
+        <span class="extn">.ddna · application/ddna+cbor</span>
+        <h3>Sovereignty bound at the payload</h3>
+        <ul>
+          <li><span class="k">Canonical</span><span class="v"><b>Byte-stable serialisation.</b> Two conformant encoders produce identical bytes for identical artifacts.</span></li>
+          <li><span class="k">Integrity</span><span class="v"><b>Cryptographic seal.</b> SHA-256 + ed25519. Tampering is detectable without interpretation.</span></li>
+          <li><span class="k">Identity</span><span class="v"><b>VitaPass / AuraID.</b> Subject identity bound in-band, independent of platform.</span></li>
+          <li><span class="k">Jurisdictional</span><span class="v"><b>In-band governance.</b> Jurisdiction, consent, retention travel with the artifact.</span></li>
+          <li><span class="k">Stateless</span><span class="v"><b>Reduced-governance mode</b> available for interchange without subject identity.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ §6 VERSIONS ============================================================ -->
+<section class="spec" id="versions">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">§6<b>Versions</b></div>
+      <div>
+        <h2 class="sec-title">Versioning is a structural commitment.</h2>
+        <p class="sec-lede">Every published schema is archived with DOI anchoring. Minor revisions preserve canonical byte stability within a major line.</p>
+      </div>
+    </div>
+
+    <table class="versions">
+      <thead>
+        <tr>
+          <th>Version</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>DOI</th>
+          <th style="text-align:right">Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="current">
+          <td class="ver">v0.8.0</td>
+          <td>March 2026</td>
+          <td><span class="badge-status published">Published</span></td>
+          <td class="mono dim">10.5281/zenodo.19555166</td>
+          <td style="text-align:right" class="dim">Partner profiles · conformance matrix</td>
+        </tr>
+        <tr>
+          <td class="ver">v0.7.2</td>
+          <td>Nov 2025</td>
+          <td><span class="badge-status archived">Archived</span></td>
+          <td class="mono dim">10.5281/zenodo.14002004</td>
+          <td style="text-align:right" class="dim">Envelope serialisation rules</td>
+        </tr>
+        <tr>
+          <td class="ver">v0.7.0</td>
+          <td>Aug 2025</td>
+          <td><span class="badge-status archived">Archived</span></td>
+          <td class="mono dim">10.5281/zenodo.13887761</td>
+          <td style="text-align:right" class="dim">Gravity domain introduced</td>
+        </tr>
+        <tr>
+          <td class="ver">v0.6.0</td>
+          <td>Apr 2025</td>
+          <td><span class="badge-status archived">Archived</span></td>
+          <td class="mono dim">10.5281/zenodo.11340022</td>
+          <td style="text-align:right" class="dim">First domain-complete draft</td>
+        </tr>
+        <tr>
+          <td class="ver">v0.9.0</td>
+          <td>Expected Q3 2026</td>
+          <td><span class="badge-status draft">Draft</span></td>
+          <td class="mute">—</td>
+          <td style="text-align:right" class="dim">Multimodal extension boundaries</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============================================================ DOWNLOADS ============================================================ -->
+<section class="spec" id="downloads">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">§7<b>Artifacts</b></div>
+      <div>
+        <h2 class="sec-title">Specification, schema, reference envelopes.</h2>
+        <p class="sec-lede">All artifacts are published under CC&nbsp;BY&nbsp;4.0 with DOI anchoring. Reference encoders and validators follow separately.</p>
+      </div>
+    </div>
+
+    <div class="downloads">
+      <div class="dl">
+        <div class="t"><span class="ext">PDF</span><h4>EDM v0.8.0 — Whitepaper</h4></div>
+        <p>Full specification, representational architecture, envelope model, and governance architecture.</p>
+        <div class="f"><span>2.4 MB · 96 pp</span><span>↓ download</span></div>
+      </div>
+      <div class="dl">
+        <div class="t"><span class="ext">JSON</span><h4>Canonical schema</h4></div>
+        <p>JSON-Schema definitions for all ten domains, with canonical enumerations and invariants.</p>
+        <div class="f"><span>118 KB</span><span>↓ download</span></div>
+      </div>
+      <div class="dl">
+        <div class="t"><span class="ext">DDNA</span><h4>Reference envelope</h4></div>
+        <p>A sealed .ddna artifact demonstrating full-profile, Level-2 conformance with in-band governance.</p>
+        <div class="f"><span>4.8 KB</span><span>↓ download</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FOOTER ============================================================ -->
+<footer class="spec-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="brand" style="margin-bottom: 12px;">
+          <span class="brand-mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <rect x="2.5" y="2.5" width="19" height="19" rx="1.5" stroke="currentColor"/>
+              <circle cx="9" cy="12" r="3" stroke="var(--primary)"/>
+              <circle cx="15" cy="12" r="3" stroke="currentColor"/>
+              <line x1="9" y1="12" x2="15" y2="12" stroke="var(--primary)"/>
+            </svg>
+          </span>
+          <span style="color:var(--ink);">Emotional Data Model</span>
+        </div>
+        <p style="max-width: 360px; margin: 0; color: var(--ink-dim); font-size: 13px;">
+          A protocol-level representation and persistence architecture for governed emotional data. Published by DeepaData Pty Ltd under CC&nbsp;BY&nbsp;4.0.
+        </p>
+      </div>
+      <div>
+        <h5>Specification</h5>
+        <ul>
+          <li><a href="#motivation">§1 Motivation</a></li>
+          <li><a href="#architecture">§2 Architecture</a></li>
+          <li><a href="#domains">§3 Domains</a></li>
+          <li><a href="#conformance">§4 Conformance</a></li>
+          <li><a href="#envelope">§5 .ddna</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="#downloads">Whitepaper</a></li>
+          <li><a href="#">Reference schema</a></li>
+          <li><a href="#">Reference envelope</a></li>
+          <li><a href="#">Errata</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:jason@emotionaldatamodel.org">jason@emotionaldatamodel.org</a></li>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">Zenodo</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="btm">
+      <span>© 2024–2026 DeepaData Pty Ltd · CC BY 4.0</span>
+      <span>Last updated: 2026-04-20 · <span class="kbd">?</span> keyboard shortcuts</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================ TWEAKS ============================================================ -->
+<div id="tweaks">
+  <header>
+    <span>Tweaks</span>
+    <span class="mono" style="font-size:10px; color: var(--ink-mute)">⌘K</span>
+  </header>
+  <div class="body">
+    <div class="field">
+      <label>Palette</label>
+      <div class="swatches" id="tw-palette">
+        <div class="sw" data-v="steel" style="background: oklch(0.155 0.006 250); color: oklch(0.68 0.09 240);">steel</div>
+        <div class="sw" data-v="graphite" style="background: oklch(0.14 0.002 250); color: oklch(0.82 0.015 250);">graph.</div>
+        <div class="sw" data-v="ink" style="background: oklch(0.13 0.015 260); color: oklch(0.72 0.095 220);">ink</div>
+        <div class="sw" data-v="paper" style="background: oklch(0.975 0.004 250); color: oklch(0.48 0.09 240);">paper</div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Density</label>
+      <div class="seg" id="tw-density">
+        <button data-v="comfortable" class="active">comfort</button>
+        <button data-v="compact">compact</button>
+        <button data-v="dense">dense</button>
+      </div>
+    </div>
+    <div class="field tog">
+      <label style="margin:0">Section numbers</label>
+      <button id="tw-num" class="on">on</button>
+    </div>
+    <div class="field tog">
+      <label style="margin:0">Manifold graphic</label>
+      <button id="tw-man" class="on">on</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const html = document.documentElement;
+
+  function apply(t) {
+    html.setAttribute('data-palette', t.palette);
+    html.setAttribute('data-density', t.density);
+    html.setAttribute('data-numbered', t.numberedSections ? 'on' : 'off');
+    const mf = document.getElementById('manifold-card');
+    if (mf) mf.style.display = t.showManifold ? '' : 'none';
+
+    // Sync UI
+    document.querySelectorAll('#tw-palette .sw').forEach(el => el.classList.toggle('active', el.dataset.v === t.palette));
+    document.querySelectorAll('#tw-density button').forEach(el => el.classList.toggle('active', el.dataset.v === t.density));
+    document.getElementById('tw-num').classList.toggle('on', t.numberedSections);
+    document.getElementById('tw-num').textContent = t.numberedSections ? 'on' : 'off';
+    document.getElementById('tw-man').classList.toggle('on', t.showManifold);
+    document.getElementById('tw-man').textContent = t.showManifold ? 'on' : 'off';
+  }
+
+  function persist(partial) {
+    Object.assign(TWEAKS, partial);
+    apply(TWEAKS);
+    try { window.parent.postMessage({ type: '__edit_mode_set_keys', edits: partial }, '*'); } catch {}
+  }
+
+  // init
+  apply(TWEAKS);
+
+  // listeners
+  document.querySelectorAll('#tw-palette .sw').forEach(el => {
+    el.addEventListener('click', () => persist({ palette: el.dataset.v }));
+  });
+  document.querySelectorAll('#tw-density button').forEach(el => {
+    el.addEventListener('click', () => persist({ density: el.dataset.v }));
+  });
+  document.getElementById('tw-num').addEventListener('click', () => persist({ numberedSections: !TWEAKS.numberedSections }));
+  document.getElementById('tw-man').addEventListener('click', () => persist({ showManifold: !TWEAKS.showManifold }));
+
+  // edit mode protocol
+  window.addEventListener('message', (e) => {
+    const d = e.data || {};
+    if (d.type === '__activate_edit_mode') document.getElementById('tweaks').classList.add('open');
+    else if (d.type === '__deactivate_edit_mode') document.getElementById('tweaks').classList.remove('open');
+  });
+  try { window.parent.postMessage({ type: '__edit_mode_available' }, '*'); } catch {}
+
+  // nav active state on scroll
+  const links = document.querySelectorAll('.navlinks a');
+  const targets = [...links].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  function onScroll() {
+    const y = window.scrollY + 120;
+    let best = null;
+    targets.forEach((t, i) => { if (t.offsetTop <= y) best = i; });
+    links.forEach(l => l.classList.remove('active'));
+    if (best !== null) links[best].classList.add('active');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+
+</body>
+</html>

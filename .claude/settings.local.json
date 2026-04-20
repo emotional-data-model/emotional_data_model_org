@@ -18,7 +18,18 @@
       "Bash(dir \"C:\\\\Users\\\\JasonHarvey-ModularW\\\\Documents\\\\GitHub\\\\planning\" /b)",
       "Bash(move:*)",
       "Bash(git mv:*)",
-      "Bash(ren:*)"
+      "Bash(ren:*)",
+      "Bash(git config:*)",
+      "Bash(git push:*)",
+      "Bash(curl:*)",
+      "Bash(cat:*)",
+      "WebFetch(domain:claude.ai)",
+      "Bash(dir:*)",
+      "Bash(powershell -Command \"Expand-Archive -Path ''emotional data mpdel update-handoff.zip'' -DestinationPath ''design-handoff'' -Force\")",
+      "Bash(git checkout:*)",
+      "Bash(npm run dev:*)",
+      "Bash(git stash:*)",
+      "Bash(xargs:*)"
     ]
   }
 }

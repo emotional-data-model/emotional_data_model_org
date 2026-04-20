@@ -1,33 +1,26 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/sections/HeroSection";
-import WhySection from "@/components/sections/WhySection";
-import WhatSection from "@/components/sections/WhatSection";
-import DdnaSection from "@/components/sections/DdnaSection";
-import UseCasesSection from "@/components/sections/UseCasesSection";
+import MotivationSection from "@/components/sections/MotivationSection";
+import ArchitectureSection from "@/components/sections/ArchitectureSection";
+import DomainsSection from "@/components/sections/DomainsSection";
+import ConformanceSection from "@/components/sections/ConformanceSection";
+import EnvelopeSection from "@/components/sections/EnvelopeSection";
+import VersionsSection from "@/components/sections/VersionsSection";
 import DownloadsSection from "@/components/sections/DownloadsSection";
-import VersionSection from "@/components/sections/VersionSection";
-import CitationSection from "@/components/sections/CitationSection";
-import ContactSection from "@/components/sections/ContactSection";
 
 const Index = () => {
   return (
     <main className="min-h-screen bg-background overflow-hidden">
       <Navigation />
       <HeroSection />
-      <div className="section-divider" />
-      <WhySection />
-      <WhatSection />
-      <div className="section-divider" />
-      <DdnaSection />
-      <div className="section-divider" />
-      <UseCasesSection />
+      <MotivationSection />
+      <ArchitectureSection />
+      <DomainsSection />
+      <ConformanceSection />
+      <EnvelopeSection />
+      <VersionsSection />
       <DownloadsSection />
-      <div className="section-divider" />
-      <VersionSection />
-      <CitationSection />
-      <div className="section-divider" />
-      <ContactSection />
       <Footer />
     </main>
   );
