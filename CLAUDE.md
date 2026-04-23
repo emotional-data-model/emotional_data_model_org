@@ -2,6 +2,8 @@
 
 Public website for the EDM open standard.
 
+**Last session:** 2026-04-23 — DownloadsSection updated to reflect ddna-tools v0.3.0 extraction capability (796ba31)
+
 ## What This Repo Is
 
 The public-facing website at emotionaldatamodel.org — the
