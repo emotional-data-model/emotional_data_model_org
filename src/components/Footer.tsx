@@ -51,7 +51,7 @@ const Footer = () => {
         </div>
         <div className="btm">
           <span>© 2024–2026 DeepaData Pty Ltd</span>
-          <span>Last updated: 2026-04-20</span>
+          <span>Last updated: 2026-04-23</span>
         </div>
       </div>
     </footer>

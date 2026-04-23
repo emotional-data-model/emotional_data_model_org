@@ -41,7 +41,7 @@ the spec but does not implement extraction or sealing.
 
 ## What This Site Does NOT Do
 
-- Extract artifacts (use deepadata-com API)
+- Extract artifacts (use ddna-tools for canonical profiles)
 - Seal or certify (use deepadata-com API)
 - Write to registry (use deepadata-com API)
 

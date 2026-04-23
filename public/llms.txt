@@ -40,7 +40,7 @@ Profile schemas (choose based on meta.profile value):
   Canonical schema, validation, and examples.
 
 - ddna-tools (MIT): https://github.com/emotional-data-model/ddna-tools
-  Seal and sign .ddna envelopes locally.
+  Extract, seal, and verify .ddna envelopes locally. Canonical profiles (essential, extended, full).
 
 - ddna-reader (MIT): https://github.com/emotional-data-model/ddna-reader
   Verify and inspect .ddna envelopes.

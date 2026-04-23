@@ -16,9 +16,9 @@ const DownloadsSection = () => {
     },
     {
       ext: "CLI",
-      title: "Envelope sealer",
-      description: "Seal and sign .ddna envelopes locally with Ed25519.",
-      size: "ddna-tools",
+      title: "Extract, seal, verify",
+      description: "Extract EDM artifacts from text (BYOK: Anthropic, OpenAI, Kimi), seal as .ddna envelopes with Ed25519, verify offline. Canonical profiles (essential, extended, full).",
+      size: "npm install -g ddna-tools",
       href: "https://github.com/emotional-data-model/ddna-tools",
     },
     {
