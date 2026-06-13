@@ -27,9 +27,9 @@ Artifacts are issued from explicitly expressed content only.
 ## Schema
 
 Profile schemas (choose based on meta.profile value):
-- Essential: https://github.com/emotional-data-model/edm-spec/blob/main/schema/edm.v0.8.1.essential.schema.json
-- Extended: https://github.com/emotional-data-model/edm-spec/blob/main/schema/edm.v0.8.1.extended.schema.json
-- Full: https://github.com/emotional-data-model/edm-spec/blob/main/schema/edm.v0.8.1.full.schema.json
+- Essential: https://github.com/emotional-data-model/edm-spec/blob/main/schema/edm.v0.8.essential.schema.json
+- Extended: https://github.com/emotional-data-model/edm-spec/blob/main/schema/edm.v0.8.extended.schema.json
+- Full: https://github.com/emotional-data-model/edm-spec/blob/main/schema/edm.v0.8.full.schema.json
 
 - Domain fragments: https://github.com/emotional-data-model/edm-spec/tree/main/schema/fragments
 - Example artifacts: https://github.com/emotional-data-model/edm-spec/tree/main/examples
