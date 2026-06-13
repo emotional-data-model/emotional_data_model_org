@@ -2,7 +2,7 @@
 
 Public website for the EDM open standard.
 
-**Last session:** 2026-04-23 — DownloadsSection updated to reflect ddna-tools v0.3.0 extraction capability (796ba31)
+**Last session:** 2026-06-13 — v0.8.1 site release: DOI 19555166→20678017, version bump, changelog, fabricated DOI fixes
 
 ## What This Repo Is
 
@@ -12,7 +12,7 @@ verification widget, and specification references.
 
 - **License:** MIT
 - **Live at:** emotionaldatamodel.org
-- **Current EDM version displayed:** v0.8.0
+- **Current EDM version displayed:** v0.8.1
 
 ## Role in the DeepaData System
 
