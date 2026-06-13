@@ -7,7 +7,7 @@ const HeroSection = () => {
         <div>
           <div className="hero-label">
             <span className="bar"></span>
-            Technical Specification · EDM v0.8.0
+            Technical Specification · EDM v0.8.1
           </div>
           <h1 className="hero-h">
             A governed, model-agnostic substrate for <em>affective context</em> in AI systems.
@@ -23,17 +23,17 @@ const HeroSection = () => {
             </span>
           </div>
           <div className="hero-cta">
-            <a className="btn btn-primary" href="https://zenodo.org/records/19555166" target="_blank" rel="noopener noreferrer">
+            <a className="btn btn-primary" href="https://zenodo.org/records/20678017" target="_blank" rel="noopener noreferrer">
               Read the specification <span className="arr">→</span>
             </a>
-            <a className="btn btn-ghost" href="https://zenodo.org/records/19555166" target="_blank" rel="noopener noreferrer">
+            <a className="btn btn-ghost" href="https://zenodo.org/records/20678017" target="_blank" rel="noopener noreferrer">
               Download whitepaper (PDF)
             </a>
           </div>
           <div className="hero-meta">
             <div className="m">
               <span className="k">Schema</span>
-              <span className="val">v0.8.0</span>
+              <span className="val">v0.8.1</span>
             </div>
             <div className="m">
               <span className="k">Domains</span>

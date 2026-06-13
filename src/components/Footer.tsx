@@ -33,7 +33,7 @@ const Footer = () => {
           <div>
             <h5>Resources</h5>
             <ul>
-              <li><a href="https://zenodo.org/records/19555166" target="_blank" rel="noopener noreferrer">Whitepaper</a></li>
+              <li><a href="https://zenodo.org/records/20678017" target="_blank" rel="noopener noreferrer">Whitepaper</a></li>
               <li><a href="https://github.com/emotional-data-model/edm-spec" target="_blank" rel="noopener noreferrer">Schema</a></li>
               <li><a href="https://github.com/emotional-data-model/ddna-tools" target="_blank" rel="noopener noreferrer">ddna-tools</a></li>
               <li><a href="/llms.txt">llms.txt</a></li>
@@ -44,14 +44,14 @@ const Footer = () => {
             <ul>
               <li><a href="mailto:contact@emotionaldatamodel.org">contact@emotionaldatamodel.org</a></li>
               <li><a href="https://github.com/emotional-data-model" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-              <li><a href="https://zenodo.org/records/19555166" target="_blank" rel="noopener noreferrer">Zenodo</a></li>
+              <li><a href="https://zenodo.org/records/20678017" target="_blank" rel="noopener noreferrer">Zenodo</a></li>
               <li><a href="https://deepadata.com" target="_blank" rel="noopener noreferrer">deepadata.com</a></li>
             </ul>
           </div>
         </div>
         <div className="btm">
           <span>© 2024–2026 DeepaData Pty Ltd</span>
-          <span>Last updated: 2026-04-23</span>
+          <span>Last updated: 2026-06-13</span>
         </div>
       </div>
     </footer>
