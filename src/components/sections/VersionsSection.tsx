@@ -5,7 +5,7 @@ const VersionsSection = () => {
       date: "June 2026",
       status: "published",
       doi: "10.5281/zenodo.20678017",
-      notes: "DOI anchoring, whitepaper refresh, schema URL alignment",
+      notes: "Sofroniew & A-MBER references, nullable-enum errata, Zenodo lineage reunification",
       current: true,
     },
     {
@@ -26,7 +26,7 @@ const VersionsSection = () => {
     },
     {
       version: "v0.6.0",
-      date: "February 2026",
+      date: "March 2026",
       status: "archived",
       doi: "10.5281/zenodo.18951891",
       notes: "Impulse domain added, envelope renamed .ddna",
@@ -34,7 +34,7 @@ const VersionsSection = () => {
     },
     {
       version: "v0.5.0",
-      date: "November 2025",
+      date: "February 2026",
       status: "archived",
       doi: "10.5281/zenodo.18541956",
       notes: "W3C Data Integrity Proofs (eddsa-jcs-2022), VitaPass identity binding",
@@ -50,7 +50,7 @@ const VersionsSection = () => {
     },
     {
       version: "v0.4.0",
-      date: "October 2025",
+      date: "December 2025",
       status: "archived",
       doi: "10.5281/zenodo.17808878",
       notes: "First public draft, 8 representational domains",
