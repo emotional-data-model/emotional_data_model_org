@@ -23,10 +23,10 @@ const HeroSection = () => {
             </span>
           </div>
           <div className="hero-cta">
-            <a className="btn btn-primary" href="https://zenodo.org/records/19555166" target="_blank" rel="noopener noreferrer">
+            <a className="btn btn-primary" href="https://zenodo.org/records/20678017" target="_blank" rel="noopener noreferrer">
               Read the specification <span className="arr">→</span>
             </a>
-            <a className="btn btn-ghost" href="https://zenodo.org/records/19555166" target="_blank" rel="noopener noreferrer">
+            <a className="btn btn-ghost" href="https://zenodo.org/records/20678017" target="_blank" rel="noopener noreferrer">
               Download whitepaper (PDF)
             </a>
           </div>

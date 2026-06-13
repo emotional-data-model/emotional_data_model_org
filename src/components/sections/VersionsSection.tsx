@@ -4,7 +4,7 @@ const VersionsSection = () => {
       version: "v0.8.0",
       date: "April 2026",
       status: "published",
-      doi: "10.5281/zenodo.19555166",
+      doi: "10.5281/zenodo.20678017",
       notes: "Partner profiles, conformance matrix, versioning model, Level-3 path",
       current: true,
     },

@@ -11,7 +11,7 @@ const MetaStrip = () => {
           <span>Date: <b>March 2026</b></span>
         </div>
         <div>
-          <span>DOI: <b>10.5281/zenodo.19555166</b></span>
+          <span>DOI: <b>10.5281/zenodo.20678017</b></span>
           <span>This version: <b>v0.8.0</b></span>
         </div>
       </div>

@@ -63,7 +63,7 @@ const Navigation = () => {
 
         <div className="nav-cta">
           <a className="btn btn-ghost btn-sm hidden sm:inline-flex" href="#downloads">Download</a>
-          <a className="btn btn-primary btn-sm" href="https://zenodo.org/records/19555166" target="_blank" rel="noopener noreferrer">
+          <a className="btn btn-primary btn-sm" href="https://zenodo.org/records/20678017" target="_blank" rel="noopener noreferrer">
             Read Spec <span className="arr">→</span>
           </a>
 
