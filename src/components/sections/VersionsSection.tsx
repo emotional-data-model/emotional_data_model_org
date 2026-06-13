@@ -1,12 +1,20 @@
 const VersionsSection = () => {
   const versions = [
     {
-      version: "v0.8.0",
-      date: "April 2026",
+      version: "v0.8.1",
+      date: "June 2026",
       status: "published",
       doi: "10.5281/zenodo.20678017",
-      notes: "Partner profiles, conformance matrix, versioning model, Level-3 path",
+      notes: "DOI anchoring, whitepaper refresh, schema URL alignment",
       current: true,
+    },
+    {
+      version: "v0.8.0",
+      date: "April 2026",
+      status: "archived",
+      doi: "10.5281/zenodo.19555166",
+      notes: "Partner profiles, conformance matrix, versioning model, Level-3 path",
+      current: false,
     },
     {
       version: "v0.7.0",
