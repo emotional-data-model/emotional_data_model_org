@@ -12,7 +12,7 @@ const VersionsSection = () => {
       version: "v0.7.0",
       date: "March 2026",
       status: "archived",
-      doi: "10.5281/zenodo.15243817",
+      doi: "10.5281/zenodo.19211903",
       notes: "10-domain manifold complete, governance slots stable",
       current: false,
     },
