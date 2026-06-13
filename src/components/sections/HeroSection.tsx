@@ -7,7 +7,7 @@ const HeroSection = () => {
         <div>
           <div className="hero-label">
             <span className="bar"></span>
-            Technical Specification · EDM v0.8.0
+            Technical Specification · EDM v0.8.1
           </div>
           <h1 className="hero-h">
             A governed, model-agnostic substrate for <em>affective context</em> in AI systems.
@@ -33,7 +33,7 @@ const HeroSection = () => {
           <div className="hero-meta">
             <div className="m">
               <span className="k">Schema</span>
-              <span className="val">v0.8.0</span>
+              <span className="val">v0.8.1</span>
             </div>
             <div className="m">
               <span className="k">Domains</span>

@@ -3,12 +3,12 @@ import { Check, Copy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
 
-const citation = `Harvey, Jason. "The Emotional Data Model (EDM): A Schema-First Protocol for Emotional Representation, Governance, and AI Memory Integrity. v0.8.0." Zenodo (2026). DOI: 10.5281/zenodo.20678017`;
+const citation = `Harvey, Jason. "The Emotional Data Model (EDM): A Schema-First Protocol for Emotional Representation, Governance, and AI Memory Integrity. v0.8.1." Zenodo (2026). DOI: 10.5281/zenodo.20678017`;
 
 const bibtex = `@misc{harvey2026edm,
   author = {Harvey, Jason},
   title = {The Emotional Data Model (EDM): A Schema-First Protocol for Emotional Representation, Governance, and AI Memory Integrity},
-  version = {0.8.0},
+  version = {0.8.1},
   year = {2026},
   publisher = {Zenodo},
   doi = {10.5281/zenodo.20678017}

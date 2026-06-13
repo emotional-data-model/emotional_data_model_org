@@ -46,7 +46,7 @@ const Navigation = () => {
             </svg>
           </span>
           <span>Emotional Data Model</span>
-          <span className="v">v0.8.0</span>
+          <span className="v">v0.8.1</span>
         </a>
 
         <div className="navlinks hidden lg:flex">
