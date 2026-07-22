@@ -963,6 +963,11 @@
     border: 1px solid var(--rule-strong);
   }
 
+  .badge-status.npm-only {
+    color: var(--ink-mute);
+    border: 1px solid var(--rule-strong);
+  }
+
   .badge-status.draft {
     color: var(--warn);
     border: 1px solid color-mix(in oklch, var(--warn) 35%, transparent);
