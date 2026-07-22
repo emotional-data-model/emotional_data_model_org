@@ -8,11 +8,11 @@ const MetaStrip = () => {
             <span className="status-dot"></span>
             Status: <b style={{ color: 'hsl(var(--accent))' }}>Published Working Draft</b>
           </span>
-          <span>Date: <b>June 2026</b></span>
+          <span>Date: <b>July 2026</b></span>
         </div>
         <div>
-          <span>DOI: <b>10.5281/zenodo.20678017</b></span>
-          <span>This version: <b>v0.8.1</b></span>
+          <span>DOI: <b>10.5281/zenodo.21490478</b></span>
+          <span>This version: <b>v0.8.3</b></span>
         </div>
       </div>
     </div>

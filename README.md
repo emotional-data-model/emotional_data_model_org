@@ -7,16 +7,17 @@ The official website for the Emotional Data Model (EDM) open specification.
 The Emotional Data Model (EDM) is a governed, schema-bound representational
 architecture for encoding affective context as a stable, machine-interpretable
 data object. EDM defines a domain-complete manifold comprising ten mandatory
-structural domains and 96 explicitly defined fields, with in-band governance
-and strict separation between representation, persistence, and computation layers.
+structural domains and 91 explicitly defined fields (Full profile), with in-band
+governance and strict separation between representation, persistence, and
+computation layers.
 
-**Current version:** v0.8.1 (June 2026)
-**DOI:** 10.5281/zenodo.20678017
+**Current version:** v0.8.3 (July 2026)
+**DOI:** 10.5281/zenodo.21490478
 **License:** MIT
 
 ## Specification
 
-- Whitepaper: https://zenodo.org/records/20678017
+- Whitepaper: https://zenodo.org/records/21490478
 - GitHub (spec): https://github.com/emotional-data-model/edm-spec
 - Contact: contact@emotionaldatamodel.org
 

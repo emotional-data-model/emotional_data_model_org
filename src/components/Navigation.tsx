@@ -46,7 +46,7 @@ const Navigation = () => {
             </svg>
           </span>
           <span>Emotional Data Model</span>
-          <span className="v">v0.8.1</span>
+          <span className="v">v0.8.3</span>
         </a>
 
         <div className="navlinks hidden lg:flex">
@@ -63,7 +63,7 @@ const Navigation = () => {
 
         <div className="nav-cta">
           <a className="btn btn-ghost btn-sm hidden sm:inline-flex" href="#downloads">Download</a>
-          <a className="btn btn-primary btn-sm" href="https://zenodo.org/records/20678017" target="_blank" rel="noopener noreferrer">
+          <a className="btn btn-primary btn-sm" href="https://zenodo.org/records/21490478" target="_blank" rel="noopener noreferrer">
             Read Spec <span className="arr">→</span>
           </a>
 

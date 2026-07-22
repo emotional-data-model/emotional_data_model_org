@@ -4,8 +4,8 @@ const DownloadsSection = () => {
       ext: "PDF",
       title: "Whitepaper",
       description: "Full specification: representational architecture, envelope model, governance.",
-      size: "v0.8.1 · 96 pp",
-      href: "https://zenodo.org/records/20678017",
+      size: "v0.8.3 · 90 pp",
+      href: "https://zenodo.org/records/21490478",
     },
     {
       ext: "JSON",

@@ -1,12 +1,28 @@
 const VersionsSection = () => {
   const versions = [
     {
+      version: "v0.8.3",
+      date: "July 2026",
+      status: "published",
+      doi: "10.5281/zenodo.21490478",
+      notes: "source_timestamp composite fix (Full profile = 91 fields), carried 0.8.1 erratum, attribution fixes",
+      current: true,
+    },
+    {
+      version: "v0.8.2",
+      date: "June 2026",
+      status: "npm-only",
+      doi: "",
+      notes: "narrative_archetype reconciled at 12; npm release only, no Zenodo deposit",
+      current: false,
+    },
+    {
       version: "v0.8.1",
       date: "June 2026",
-      status: "published",
+      status: "archived",
       doi: "10.5281/zenodo.20678017",
       notes: "Sofroniew & A-MBER references, nullable-enum errata, Zenodo lineage reunification",
-      current: true,
+      current: false,
     },
     {
       version: "v0.8.0",
